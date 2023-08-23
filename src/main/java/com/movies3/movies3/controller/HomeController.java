@@ -20,17 +20,17 @@ public class HomeController {
 	private com.movies3.movies3.service.MovieService movieService;
 
 	// THIS IS BEST TO RETRN JUST A STRING
-	@GetMapping("/home")
+	/*@GetMapping("/home")
 	public String getAllMovies() {
 		return "home";
-	}
+	}*/
 
 	
-	 /**@GetMapping("/home/movies") 
+	 @GetMapping("/home/movies") 
 	 public ResponseEntity<List<Movie>> getAllMovies(){ 
 		 return new ResponseEntity<List<Movie>>(movieService.allMovies(),
 	  HttpStatus.OK);
-	  }**/
+	  }
 	 
 	 
 	
