@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
 
 import com.movies3.movies3.model.Movie;
 import com.movies3.movies3.model.Review;
 import com.movies3.movies3.repository.ReviewRepository;
 
+@Service
 public class ReviewServiceImpl implements ReviewService{
 	
 	
@@ -37,7 +39,7 @@ public class ReviewServiceImpl implements ReviewService{
 	// so we need to update the reviewsId array an push anew one
 		mongoTemplate.update(Movie.class)
 		    .matching(Criteria.where("movieId").is(movieId))
-		    .apply(new Update().push("reviewIds").value(review))
+		    .apply(new Update().push("reviewsId").value(review))
 		    .first();
 		
 		// return the review we've just created
