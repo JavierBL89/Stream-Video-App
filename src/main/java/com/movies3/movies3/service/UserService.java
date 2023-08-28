@@ -11,9 +11,11 @@ import com.movies3.movies3.model.User;
 public interface UserService {
 	
 	// database access method
-		public List<User> getUser();
+	public List<User> getUser();
 		
 	
 	User save(User user);
+	
+	
 
 }

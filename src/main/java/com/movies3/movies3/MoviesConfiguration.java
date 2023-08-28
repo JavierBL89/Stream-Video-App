@@ -27,11 +27,12 @@ public class MoviesConfiguration implements WebMvcConfigurer{
 
        @Autowired
 		private org.springframework.context.ApplicationContext applicationContext;
+       
        @Bean
        public SpringResourceTemplateResolver templateResolver() {
            SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
            templateResolver.setCacheable(false);
-           templateResolver.setPrefix("classpath:/templates/");
+           templateResolver.setPrefix("classpath:/webapp/views/");
            templateResolver.setSuffix(".html");
            return templateResolver;
        }
