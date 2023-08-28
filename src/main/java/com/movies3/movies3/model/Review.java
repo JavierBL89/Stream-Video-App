@@ -12,6 +12,7 @@ public class Review {
 	private int numbOfReviews;
 	private int like;
 	private int dislike;
+	private String body;
 
 	// constructor
 	public Review() {
@@ -23,6 +24,11 @@ public class Review {
 		this.like = like;
 		this.dislike = dislike;
 	}
+	
+	// constructor
+		public Review(String reviewBody) {
+           this.body = reviewBody;
+		}
 
 	// process
 	public int getNumbOfReviews() {
