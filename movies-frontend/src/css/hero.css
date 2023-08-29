@@ -9,13 +9,27 @@ body{
 .container-fluid{
     padding: 0;
 }
+
 /************************************** DESKTOP SCREEN SIZE */
 @media only screen and (min-width: 900px) {
 
     /********** NAVBAR */
+    .navbar{
+        padding: 0;
+    }
+
     #navbar-container{
-        padding: 20px 40px;
-        
+        padding: 20px 40px;  
+        position: absolute;
+        top: 20px;
+        color: aqua;
+      
+    }
+
+    .navbar-brand{
+        color: rgb(140, 197, 254);
+        font-weight: bold;
+        font-size: 1.5rem;
     }
 
     /********* FOOTER */
@@ -32,26 +46,43 @@ body{
         padding: 80px;
     }
 
-/******************* HERO PAGE ***********/
+/******************* HERO SECTION ***********/
 
-.hero-wraper .hero-1{
+.hero-wraper .hero-container{
     width: 100%;
     min-height: 90vh;
     max-height: 100vh;
-    background-image: url("../images/hero8-effect.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.hero-wraper .hero-1{
+    background-image: url("../images/hero8-effect.jpg");
+    text-align: center;
+}
+
 .hero-wraper .hero-2{
-    width: 100%;
-    min-height: 90vh;
-    max-height: 100vh;
     background-image: url("../images/hero5.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+
+.hero-wraper .hero-1 h1{
+    text-align: center;
+    padding-top: 15%;
+    color: azure;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    font-size: 3rem;
+
+}
+
+.hero-wraper .hero-1 h2{
+    text-align: center;
+    color: azure;
+    letter-spacing: 0.7px;
+    font-size: 2rem;
+
+
 }
 
 .interHero-container{
@@ -78,6 +109,22 @@ body{
     border: solid 0.5px white;
 }
 
+.call-to-action{
+    margin-top: 5%;
+    color: rgb(23, 66, 104);
+    font-weight: bold;
+}
 
+.call-to-action button{
+    /* color: rgb(23, 66, 104); */
+    /* border-color: rgb(23, 66, 104); */
+    /* font-weight: bold */
+
+}
+
+.call-to-action button:hover{
+    /* color: rgb(23, 66, 104); */
+    font-weight: normal;
+}
 
 }

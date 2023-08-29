@@ -1,17 +1,18 @@
 import React from "react";
 import Container from 'react-bootstrap/Container';
+import Button from "react-bootstrap/esm/Button";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function AppNavbar(){
     return(
-      <Navbar className="navbar">
-      <Container fluid className="navbar-container" id="navbar-container">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar className="navbar bg-transparent" >
+      <Container fluid className="navbar-container bg-transparent" id="navbar-container">
+        <Navbar.Brand href="#home">Film Film</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          {/* <Nav className="ms-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -25,8 +26,10 @@ function AppNavbar(){
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
+        <Button style={{textAlign: "right"}} variant="primary">Sing In</Button>
+
       </Container>
     </Navbar>
         

@@ -10,7 +10,7 @@ function App() {
      <AppNavbar></AppNavbar>
      <WelcomePage/>
      <Footer/>
-
+      
     </div>
   );
 }
