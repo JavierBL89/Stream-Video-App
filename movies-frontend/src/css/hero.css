@@ -101,12 +101,32 @@ body{
     max-height: 500px;
     padding-top: 60px;
     width: 40%;
-    min-width: 40%;
+    min-width: 55%;
     max-width: 60%;
+    border-radius: 10px;
+}
+.interHero-container > .interHero-1 .share-icons{
+    justify-content: space-around;
+    padding-left:  150px;
+    padding-right:  150px;
+    padding-top: 50px;
+}
+.interHero-container > .interHero-1{
+    border: solid 0.5px white;
 }
 
-.interHero-container > .container-1{
-    border: solid 0.5px white;
+.interHero-container > .interHero-1 p{
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.interHero-container > .interHero-1 h3{
+    font-size: 2.3rem;
+}
+
+.interHero-container > .interHero-1 > p{
+    margin-top: 3%;
+    font-size: 1.5rem;
 }
 
 .call-to-action{
