@@ -2,7 +2,15 @@
 
 /************************************** DESKTOP SCREEN SIZE */
 @media only screen and (min-width: 900px) {
+
+    /********** NAVBAR */
+    #navbar-container{
+        padding: 20px 40px;
+    }
+
+    
 /******************* HERO PAGE ***********/
+
 .hero-wraper .hero-1{
     width: 100%;
     min-height: 90vh;

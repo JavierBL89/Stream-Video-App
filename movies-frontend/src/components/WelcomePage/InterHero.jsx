@@ -1,15 +1,16 @@
 import React from "react";
+import Container from 'react-bootstrap/Container';
 
 
 function InterHero(props){
 
     return(
-        <div className="container-fluid interHero-container">
-          <div className={props.className}>
+        <Container fluid className="interHero-container">
+          <Container fluid className={props.className}>
             <h6>Share with anyone you want</h6>
-          </div>
+          </Container>
 
-        </div>
+        </Container>
     )
 }
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 function Header(){
     return (
-    <div className="header-wraper">
-     <div className='header-container'></div>
-    </div>)
+        <Container className="header-wraper">
+            <Container className="header-container"></Container>
+        </Container>
+    )
     
 }
 

@@ -1,12 +1,13 @@
 import React from "react";
-import Navbar from "./Navbar/NavBar";
+import AppNavbar from "./Navbar/AppNavbar";
 import WelcomePage from "./WelcomePage/WelcomePage";
 
 function App() {
   return (
     <div className="app-main-wraper">
-<Navbar></Navbar>
-<WelcomePage/>
+     <AppNavbar></AppNavbar>
+     <WelcomePage/>
+
     </div>
   );
 }

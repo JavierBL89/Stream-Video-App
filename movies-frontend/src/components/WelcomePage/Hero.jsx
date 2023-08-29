@@ -1,15 +1,16 @@
 import React from "react";
+import Container from 'react-bootstrap/Container';
+
 
 
 function Hero(props){
 
     return(
-          <div className="hero-wraper ">
-            <div className={props.classContainer}>
-          </div>
-
-          </div>
-
+      <div>
+          <Container fluid className="hero-wraper">
+            <Container fluid className={props.classContainer}></Container>
+          </Container>
+</div>
     )
 };
 
