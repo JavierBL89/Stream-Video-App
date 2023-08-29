@@ -1,0 +1,50 @@
+
+
+/************************************** DESKTOP SCREEN SIZE */
+@media only screen and (min-width: 900px) {
+/******************* HERO PAGE ***********/
+.hero-wraper .hero-1{
+    width: 100%;
+    min-height: 90vh;
+    max-height: 100vh;
+    background-image: url("../images/hero8-effect.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-wraper .hero-2{
+    width: 100%;
+    min-height: 90vh;
+    max-height: 100vh;
+    background-image: url("../images/hero5.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.interHero-container{
+    margin: 0;
+    text-align: center;
+    min-height: 80vh;
+    max-height: 85vh;
+    background-color: rgb(11, 32, 51);
+    color: white;
+    font-size: 16px;
+    padding: 100px 0;
+}
+
+.interHero-container > .content-container{
+    min-height: 400px;
+    max-height: 500px;
+    padding-top: 60px;
+    width: 40%;
+    min-width: 40%;
+    max-width: 60%;
+}
+
+.interHero-container > .container-1{
+    border: solid 0.5px white;
+}
+
+}
