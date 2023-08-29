@@ -1,14 +1,33 @@
 
-
+body{
+    margin: 0;
+    padding: 0;
+}
 /************************************** DESKTOP SCREEN SIZE */
 @media only screen and (min-width: 900px) {
 
     /********** NAVBAR */
     #navbar-container{
         padding: 20px 40px;
+        
     }
 
-    
+    /********* FOOTER */
+    .footer-wraper{
+        margin: 0;
+        padding: 0;
+    }
+    .footer-container{
+        width: 70%;
+        min-width: 70%;
+        max-width: 75%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 80px;
+
+
+    }
+
 /******************* HERO PAGE ***********/
 
 .hero-wraper .hero-1{
@@ -54,5 +73,7 @@
 .interHero-container > .container-1{
     border: solid 0.5px white;
 }
+
+
 
 }
