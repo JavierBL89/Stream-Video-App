@@ -165,7 +165,6 @@ body{
 .interHero-container > .content-container{
     min-height: 400px;
     max-height: 500px;
-    padding-top: 60px;
     width: 40%;
     min-width: 55%;
     max-width: 60%;
@@ -188,12 +187,41 @@ body{
 }
 
 .interHero-container > .interHero-1 h3{
+    padding-top: 60px;
     font-size: 2.3rem;
 }
 
 .interHero-container > .interHero-1 > p{
     margin-top: 3%;
     font-size: 1.5rem;
+}
+
+
+.interHero-container > .interHero-2 .row{
+    margin: 50px;
+}
+
+.interHero-container > .interHero-2  h3{
+    margin-top: 3%;
+    font-size: 1.9rem;
+    font-weight: normal;
+}
+
+.interHero-container > .interHero-2  p{
+    margin-top: 3%;
+    font-size: 1.9rem;
+}
+
+.interHero-container > .interHero-2  h5{
+    margin-top: 3%;
+    font-size: 3.2rem;
+    color: rgb(140, 197, 254);
+}
+
+.interHero-container > .interHero-2  button{
+    margin: 5% auto 0;
+    /* margin-top: 3%; */
+    max-width: 40%;
 }
 
 .call-to-action{
