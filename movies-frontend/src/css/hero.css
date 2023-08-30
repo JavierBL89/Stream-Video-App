@@ -47,7 +47,7 @@ body{
         padding: 80px;
     }
 
-/******************* HERO SECTION ***********/
+/**************************** HERO SECTIONS ***********/
 
 .hero-wraper .hero-container{
     width: 100%;
@@ -151,11 +151,12 @@ body{
     max-width: 80%;
 }
 
+/************************* INTERHERO SECTIONS */
 .interHero-container{
     margin: 0;
     text-align: center;
-    min-height: 80vh;
-    max-height: 85vh;
+    min-height: 700px;
+    max-height: 750px;
     background-color: rgb(11, 32, 51);
     color: white;
     font-size: 16px;
@@ -219,9 +220,14 @@ body{
 }
 
 .interHero-container > .interHero-2  button{
-    margin: 5% auto 0;
-    /* margin-top: 3%; */
-    max-width: 40%;
+    margin: 40px auto 60px;
+background-color: rgb(187, 77, 50); 
+border-color: rgb(187, 77, 50);
+min-width: 30%;
+  max-width: 35%;
+  font-weight: bold;
+  letter-spacing: 0.5;
+  padding: 12px;
 }
 
 .call-to-action{
@@ -230,12 +236,6 @@ body{
     font-weight: bold;
 }
 
-.call-to-action button{
-    /* color: rgb(23, 66, 104); */
-    /* border-color: rgb(23, 66, 104); */
-    /* font-weight: bold */
-
-}
 
 .call-to-action button:hover{
     /* color: rgb(23, 66, 104); */

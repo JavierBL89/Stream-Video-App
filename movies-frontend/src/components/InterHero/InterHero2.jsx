@@ -17,7 +17,7 @@ function InterHero2(props){
                 <Col><h5>FilFilm</h5></Col>
             </Row>
             <Row>
-                <Button variant="danger">SingUp</Button>
+                <Button >SingUp</Button>
             </Row>
         </Container>
       </Container>

@@ -1,0 +1,18 @@
+.footer-wraper{
+    border-top: solid 2px;
+    box-shadow: 5px 10px 5px 15px white ;
+    background-color: rgb(11, 32, 51);
+}
+
+.footer-container .row{
+    color: white;
+    font-size: 22px;
+    margin: 40px auto;
+
+}
+
+.footer-wraper .credits{
+    margin: 0;
+    padding: 10px;
+    color: rgb(140, 197, 254);
+}
