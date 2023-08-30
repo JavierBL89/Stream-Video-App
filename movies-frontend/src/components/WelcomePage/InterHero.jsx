@@ -17,9 +17,9 @@ function InterHero(props){
             {/*** Render if condition ****/}
             {props.className === "interHero-1" ? 
               <Stack  className="share-icons" direction="horizontal" >
-                <PiDevicesBold fontSize="3.5rem"/>
-                <HiHome fontSize="3rem"/>
-                <IoIosPeople fontSize="3.5rem"/>
+                <PiDevicesBold fontSize="4rem"/>
+                {/* <HiHome fontSize="3rem"/> */}
+                <IoIosPeople fontSize="4.5rem"/>
               </Stack> : null
             }
           </Container>
