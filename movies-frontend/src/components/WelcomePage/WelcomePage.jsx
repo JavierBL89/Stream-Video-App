@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "./Hero/Hero";
-import InterHero from "../InterHero/InterHero";
+import InterHero from "./Hero/InterHero/InterHero";
 import Container from 'react-bootstrap/Container';
 
 

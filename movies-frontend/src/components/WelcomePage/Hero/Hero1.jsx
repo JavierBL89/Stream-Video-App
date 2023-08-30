@@ -8,14 +8,18 @@ import Button from "react-bootstrap/esm/Button";
 
 function Hero1(props){
 
-
+    const spacer = `<br/>`
 
     return(
       <div>
           <Container fluid className="hero-wraper">
             <Container fluid className={`hero-container ${props.classContainer}`}>
               <H1 className="call-to-action-heading"
-                text="Enjoy unlimited content!"/>
+                text="Enjoy"/>
+                <H1 className="call-to-action-heading pt-0"
+                text="unlimited"/>
+                <H1 className="call-to-action-heading pt-0"
+                text="content !"/>
               <H2 className="call-to-action-text"
                  text="films, series, tv programs and more"/>
                  <Container className="call-to-action">
