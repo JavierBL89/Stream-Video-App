@@ -10,12 +10,13 @@ function InterHero1(props){
     return(
         <Container fluid className={`container-fluid content-container ${props.className}`}>
             <h3 className={props.classname}>{props.title}</h3>
-            <p>{props.text}</p>
-              <Stack  className="share-icons" direction="horizontal" >
-                <PiDevicesBold fontSize="4rem"/>
+            <Stack  className="share-icons" direction="horizontal" >
+                <PiDevicesBold />
                 {/* <HiHome fontSize="3rem"/> */}
-                <IoIosPeople fontSize="4.5rem"/>
+                <IoIosPeople />
               </Stack> 
+            <p>{props.text}</p>
+              
           </Container>
     )
 }
