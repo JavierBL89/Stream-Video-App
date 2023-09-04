@@ -646,13 +646,23 @@ display: block;
     font-size: 2rem;
 }
 
+.hero-wraper .hero-2 .row{
+    margin-top: 25px;
+    max-width: 80%;
+    min-height: 600px;
+}
+
 .hero-wraper .hero-2 .everywhere-heading{
-    text-align: center;
-    padding-top: 35%;
+    text-align: left;
+    padding: 22% 25% 0;
     color: azure;
     font-weight: bold;
     letter-spacing: 0.7px;
-    font-size: 2.3rem;
+    font-size: 2.5rem;
+}
+
+.hero-wraper .hero-2 .everywhere-container-images{
+    margin-top: 120px;
 }
 
 .hero-wraper .hero-2 .everywhere-text{
@@ -664,41 +674,41 @@ display: block;
     font-size: 1.7rem;
 }
 
-.hero-wraper .hero-2 .everywhere-img1{
-    width: 200px;
-    height: 200px;
+.hero-wraper .hero-2 .container-img1{
+    width: 220px;
+    height: 220px;
     background-image: url("../images/watch1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    top: 80px;
-    left:50px;
+    top: 0px;
+    right:140px;
 }
 
-.hero-wraper .hero-2 .everywhere-img2{
-    width: 200px;
-    height: 240px;
+.hero-wraper .hero-2 .container-img2{
+    width: 260px;
+    height: 280px;
     background-image: url("../images/watch2.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     right:150px;
+    bottom: 150px;
 
 }
 
-.hero-wraper .hero-2 .everywhere-img3{
-    width: 210px;
-    height: 220px;
+.hero-wraper .hero-2 .container-img3{
+    width: 230px;
+    height: 240px;
     background-image: url("../images/watch5.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: absolute;
     position: relative;
     bottom: 140px;
-    left:70px;
+    right: 40px;
     transform: rotate(8deg);
 
 }
