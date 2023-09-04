@@ -92,6 +92,9 @@ body{
     padding: 0;
 }
 
+.container-fluid{
+    padding: 0;
+}
 
 /************************************* MOBILE SCREEN */
 
@@ -120,6 +123,7 @@ body{
 
 .hero-wraper .hero-1{
     text-align: center;
+    padding: 11% 12%;
 }
 
 .hero-wraper .hero-2{
@@ -132,16 +136,14 @@ body{
     color: azure;
     padding: 13% 0 7% 0; 
     letter-spacing: 0.7px;
-    font-size: 1.4rem;
-    margin-left: 50px;
-    margin-right: 50px;
+    font-size: 1.2rem;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .hero-wraper .hero-1 .call-to-action-heading1{
     text-align: left;
     padding-top: 35%;
-    margin-left: 50px;
-    margin-right: 50px;
     color: azure;
     font-weight: bold;
     letter-spacing: 0.7px;
@@ -151,24 +153,19 @@ body{
 
 .hero-wraper .hero-1 .call-to-action-heading2{
     text-align: left;
-    margin-left: 50px;
     color: azure;
     font-weight: bold;
     letter-spacing: 0.7px;
     font-size: 2.2rem;
-    margin-left: 50px;
-    margin-right: 50px;
+
 
 }
 .hero-wraper .hero-1 .call-to-action-heading3{
     text-align: left;
-    margin-left: 50px;
     color: azure;
     font-weight: bold;
     letter-spacing: 0.7px;
     font-size: 2.2rem;
-    margin-left: 50px;
-    margin-right: 50px;
 
 }
 
@@ -333,29 +330,51 @@ body{
     font-size: 3.2rem;
   }
 
-
 .interHero-container > .interHero-2 .row{
-    margin: 50px;
+    text-align: center;
+    letter-spacing: 0.7px;
+    /* margin: 50px; */
+}
+
+.interHero-container > .interHero-2 .weeklyWord{
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    opacity: 0.7;
+}
+.interHero-container > .interHero-2 .newContent,
+.interHero-container > .interHero-2 .premiumReleases{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.interHero-container > .interHero-2 .enjoyWord{
+    margin-top: 60px;
+    margin-bottom: 0;
+    
 }
 
 .interHero-container > .interHero-2  h3{
     margin-top: 3%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: normal;
+    
 }
 
 .interHero-container > .interHero-2  p{
     margin-top: 3%;
-    font-size: 1.9rem;
+    font-size: 1.4rem;
 }
+
 
 .interHero-container > .interHero-2  h5{
-    margin-top: 3%;
-    font-size: 3.2rem;
+    margin-top: 60px;
+    font-size: 2.2rem;
     color: rgb(140, 197, 254);
+    letter-spacing: 0;
 }
 
-.interHero-container > .interHero-2  button{
+
+/* .interHero-container > .interHero-2  button{
     margin: 40px auto 60px;
 background-color: rgb(187, 77, 50); 
 border-color: rgb(187, 77, 50);
@@ -364,7 +383,7 @@ min-width: 30%;
   font-weight: bold;
   letter-spacing: 0.5;
   padding: 12px;
-}
+} */
 
 .call-to-action{
     margin-top: 5%;
@@ -528,6 +547,45 @@ display: block;
   .interHero-container > .interHero-1 .share-icons :nth-child(2){
       font-size: 3.5rem;
     }
+
+    
+.interHero-container > .interHero-2 .weeklyWord{
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+.interHero-container > .interHero-2 .newContent,
+.interHero-container > .interHero-2 .premiumReleases{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.interHero-container > .interHero-2 .enjoyWord{
+    margin-top: 60px;
+    margin-bottom: 0;
+    
+}
+
+.interHero-container > .interHero-2  h3{
+    margin-top: 3%;
+    font-size: 1.6rem;
+    font-weight: normal;
+    
+}
+
+.interHero-container > .interHero-2  p{
+    margin-top: 3%;
+    font-size: 1.6rem;
+}
+
+
+.interHero-container > .interHero-2  h5{
+    margin-top: 70px;
+    font-size: 2.3rem;
+    color: rgb(140, 197, 254);
+    letter-spacing: 0;
+}
 
 }
 
