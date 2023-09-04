@@ -401,7 +401,7 @@ min-width: 30%;
  
     /********** NAVBAR */
 #navbar-container{
-    padding: 10px 30px;  
+    padding: 15px 40px;
 }
 
 #navbar-container .navbar-brand{
@@ -587,6 +587,9 @@ display: block;
 /************************************** DESKTOP SCREEN SIZE */
 @media only screen and (min-width: 900px) {
 
+    #navbar-container{
+    padding: 20px 80px;
+   }
 
     .navbar-brand{
         font-size: 1.5rem;
@@ -629,7 +632,7 @@ display: block;
 
 .hero-wraper .hero-1 h1{
     text-align: center;
-    padding-top: 250px;
+    padding-top: 70px;
     color: azure;
     font-weight: bold;
     letter-spacing: 0.7px;
@@ -741,8 +744,8 @@ display: block;
 
 .interHero-container > .interHero-1 .share-icons{
     justify-content: space-around;
-    padding-left:  150px;
-    padding-right:  150px;
+    padding-left: 150px;
+    padding-right: 150px;
     padding-top: 80px;
 }
 
