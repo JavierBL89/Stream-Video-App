@@ -1,0 +1,32 @@
+import React from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+
+
+function NavTab(){
+    return (
+      <Container fluid className="navTab-wraper">
+      <Container fluid className="navTab-container d-flex">
+        <Nav activeKey="/movies"
+              onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
+            <Nav.Item>
+                <Nav.Link eventKey="myspace">My Space</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="movies">Movies</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="series">Series</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="upcoming">Upcoming</Nav.Link>
+            </Nav.Item>
+        </Nav>
+
+      </Container>
+
+      </Container>
+    )
+};
+
+export default NavTab;

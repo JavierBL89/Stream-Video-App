@@ -1,0 +1,12 @@
+.navTab-wraper{
+    margin-top: 150px;
+}
+
+.navTab-wraper .navTab-container{
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.navTab-wraper .navTab-container .nav-item{
+    margin: auto 30px;
+}
