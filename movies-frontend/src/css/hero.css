@@ -739,16 +739,17 @@ display: block;
 }
 
 
-
 .interHero-container > .interHero-1 .share-icons{
     justify-content: space-around;
     padding-left:  150px;
     padding-right:  150px;
-    padding-top: 50px;
+    padding-top: 80px;
 }
+
 
 .interHero-container > .interHero-1{
     border: solid 0.5px white;
+    margin-top: 50px;
 }
 
 .interHero-container > .interHero-1 p{
@@ -758,11 +759,12 @@ display: block;
 
 .interHero-container > .interHero-1 h3{
     padding-top: 60px;
-    font-size: 2.3rem;
+    font-size: 2.5rem;
+    max-width: 700px;
 }
 
 .interHero-container > .interHero-1 > p{
-    margin-top: 3%;
+    margin-top: 5%;
     font-size: 1.5rem;
 }
 

@@ -14,8 +14,8 @@ function InterHero(props){
           {props.className === "interHero-1" ?
            <InterHero1 
             className={props.className}
-            text1="Up to 5 devices"
-            text2=" Share with anyone you want" />
+            text1=" Share with anyone you want"
+            text2="Up to 5 devices"/>
           : <InterHero2 
             className={props.className}
             text1="Weekly"
