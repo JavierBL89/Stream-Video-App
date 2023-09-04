@@ -10,7 +10,7 @@ function InterHero2(props){
 
     return(
         <Container fluid className={`container-fluid content-container ${props.className}`}>
-        <Container >
+        <Container fluid >
             <Row>
             <Col sm={12} lg={6}>
               <p className={props.text1ClassName}>{props.text1}</p>
