@@ -1,18 +1,16 @@
 import React from "react";
 import AppNavbar from "../Navbar/AppNavbar";
 import Container from "react-bootstrap/esm/Container";
-import SectionNavbar from "./NavTab";
-import Presentation from "./NavTab";
+import Presentation from "./Presentation/Presentation";
+import NavTab from "./NavTab";
 
 function HomePage(){
     
         return(
-            <Container fluid className="homePage-wraper">
+            <Container fluid className="homepage-wraper">
               <AppNavbar/>
-              <Container fluid className="homePage-wraper">
-              <SectionNavbar />
+              <NavTab />
               <Presentation/>
-              </Container>
               </Container>
         )
     

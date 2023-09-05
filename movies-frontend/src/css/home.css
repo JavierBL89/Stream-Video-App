@@ -1,5 +1,5 @@
 .navTab-wraper{
-    margin-top: 150px;
+    margin-top: 80px;
 }
 
 .navTab-wraper .navTab-container{
@@ -9,4 +9,37 @@
 
 .navTab-wraper .navTab-container .nav-item{
     margin: auto 30px;
+}
+
+
+@media only screen and (min-width: 900px) {
+
+.presentation-wraper{
+    min-width: 100%;
+    min-height: 90vh;
+    padding: 40px 0;
+    background-color: rgb(170, 214, 253);
+}
+    
+.presentation-container .presentation-player-container{
+   min-width: 1100px;
+   max-width: 1300px;
+    /* padding: 50px 0; */
+    background-color: blanchedalmond;
+}
+
+ .presentation-player-container .media-player-1{
+    min-width: 350px;
+    min-height: 500px;
+    padding: 10px 20px;
+    background-color: rgb(84, 79, 72);
+
+}
+
+.presentation-player-container .media-player-2{
+    min-width: 350px;
+    min-height: 500px;
+    padding: 10px 20px;
+    background-color: rgb(90, 67, 35);
+}
 }

@@ -8,8 +8,7 @@ function Presentation(){
     return (
         <Container fluid className="presentation-wraper">
           <Container fluid className="presentation-container">
-            <PresentationPlayer className="presentation-player-1"/>
-            <PresentationPlayer className="presentation-player-1"/>
+            <PresentationPlayer/>
           </Container>
         </Container>
 
