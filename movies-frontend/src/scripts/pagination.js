@@ -1,17 +1,17 @@
 
-let rows = 1;
-let current_page = 1;
-let columns_per_page = 6;
-let start = columns_per_page * current_page;
-let end = start + columns_per_page;
-let item;
+let current_page = 0;
+let start ;
+let end ;
 let paginatedList = [];
 
 
-    function displayList(items, img_wraper, element, current_page){
+    function displayList(items, columns_per_page, page){
         //  img_wraper.innerHTML = " ";
-         current_page--;
-
+         current_page = page +1;
+         
+         start = columns_per_page * current_page;
+         end = start + columns_per_page ;
+         
          paginatedList = items.slice(start, end);
 
        
