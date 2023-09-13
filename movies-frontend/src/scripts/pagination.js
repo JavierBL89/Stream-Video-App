@@ -1,24 +1,40 @@
+import putos from "../fakeMovies.js";
 
-let current_page = 0;
+
+const allMoviesArray = putos;
+let moviesArray1 = [];
+let moviesArray2 = [];
+
+    /** split the array of movies into 2 different arrays */
+    for(let i=0;i < allMoviesArray.length;i++){
+        if(allMoviesArray[i] %2 ===0){
+            moviesArray1.push(allMoviesArray[i]);
+        }else{
+            moviesArray2.push(allMoviesArray[i]);
+        }
+    }
+
+
 let start ;
 let end ;
-let paginatedList = [];
+let moviesArrayPaginated1 = [];
+let moviesArrayPaginated2 = [];
 
 
-    function displayList(items, columns_per_page, page){
-        //  img_wraper.innerHTML = " ";
-         current_page = page +1;
-         
-         start = columns_per_page * current_page;
+    function displayList(listName, columns_per_page, page){
+        
+        // set the start and end of the sequence of items to be sliced from the array of items
+         start = columns_per_page * page;
          end = start + columns_per_page ;
          
-         paginatedList = items.slice(start, end);
+         if(listName === "list1"){
+            moviesArrayPaginated1 = moviesArray1.slice(start, end);
 
-       
-        console.log(paginatedList);
-        return paginatedList;
+         }else if(listName === "list2"){
+            moviesArrayPaginated2 = moviesArray2.slice(start, end);
+         }
 
     }
 
 
-   export { displayList, paginatedList };
+   export { displayList, moviesArrayPaginated1, moviesArrayPaginated2 };

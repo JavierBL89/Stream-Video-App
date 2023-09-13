@@ -52,5 +52,11 @@
 .pagination-container{
 display: flex;
 flex-direction: row;
+padding: 50px 0;
+color: aliceblue;
+}
+
+.list1{
+    margin-bottom: 20px;
 }
 }
