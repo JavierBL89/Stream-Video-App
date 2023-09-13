@@ -13,7 +13,9 @@
 
 
 @media only screen and (min-width: 900px) {
-
+.homepage-container {
+    padding: 0 7%;
+}
 .presentation-wraper{
     min-width: 100%;
     min-height: 90vh;
@@ -29,7 +31,7 @@
 }
 
  .presentation-player-container .media-player-1{
-    min-width: 350px;
+    min-width: 550px;
     min-height: 500px;
     padding: 10px 20px;
     background-color: rgb(84, 79, 72);
@@ -37,15 +39,16 @@
 }
 
 .presentation-player-container .media-player-2{
-    min-width: 350px;
+    min-width: 550px;
     min-height: 500px;
     padding: 10px 20px;
     background-color: rgb(90, 67, 35);
 }
 
+
 .film-cover-img{
-    width: 50px;
-    height: 50px;
+    width: 200px;
+    height: 320px;
     background-color: rgb(0, 0, 0);
 }
 

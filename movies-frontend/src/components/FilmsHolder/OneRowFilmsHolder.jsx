@@ -3,11 +3,11 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { displayList, moviesArrayPaginated1, moviesArrayPaginated2, disabled} from "../../scripts/pagination.js";
+import { displayList, moviesArrayPaginated,  disabled} from "../../scripts/oneRowPagination.js";
 
 import MovieCover from "../MovieCover.jsx";
 
-function FilmsHolder(props){
+function OneRowFilmsHolder(props){
 
     // set initial page 
     let current_page = useRef(0);
@@ -15,8 +15,7 @@ function FilmsHolder(props){
     /* I'm using 2 different arrays to create 2 rows to display 
     * since I dont know how to make 2 rows with 6 columns from the same array
     */
-    const [row, setRow] = useState (moviesArrayPaginated1);
-    const [row2, setRow2] = useState (moviesArrayPaginated2);
+    const [row, setRow] = useState (moviesArrayPaginated);
 
     const holder = props.filmsHolder;
     let page = 0;
@@ -31,14 +30,6 @@ function FilmsHolder(props){
         displayList(listName, columns_per_page, current_page)
     }
 
-    /** 
-     * Function to get the inital sequence of items of the second row
-     */
-    function showRow2 (listName, current_page){
-        current_page = current_page.current;
-       displayList(listName, columns_per_page, current_page)
-    }
-
     /***
      * Function to get next sequence of movies to show
      */
@@ -48,8 +39,7 @@ function FilmsHolder(props){
        displayList("list1", columns_per_page, page);
        displayList("list2", columns_per_page, page );
 
-       setRow(moviesArrayPaginated1);
-       setRow2(moviesArrayPaginated2);
+       setRow(moviesArrayPaginated);
 
     }
 
@@ -57,19 +47,16 @@ function FilmsHolder(props){
         if (current_page.current > 0) {
             current_page.current = current_page.current - 1;
             page = current_page.current
-            displayList("list1", columns_per_page, page);
-            displayList("list2", columns_per_page, page );
-     
-            setRow(moviesArrayPaginated1);
-            setRow2(moviesArrayPaginated2);
+            displayList("list", columns_per_page, page);
+            setRow(moviesArrayPaginated);
         }
 
     }
     
    
     return (
-        <Container className="filmsHolder-wraper">
-            <Container className={`filmsHolder-container ${holder}`} > 
+        <Container fluid className="filmsHolder-wraper">
+            <Container fluid className={`filmsHolder-container ${holder}`} > 
                <nav className="pagination-container">
                
                {
@@ -89,12 +76,7 @@ function FilmsHolder(props){
                             })
                         }
                      </Row>
-                     <Row onload={showRow2("list2", current_page)} className="list2">
-                     { row2.map((item, index) => {
-                             return <MovieCover key={index} img={item}/>
-                            })
-                        }
-                     </Row>
+
                    </Stack>
                    
                    {/*** if array length is less than 6 display disabled button 
@@ -117,4 +99,4 @@ function FilmsHolder(props){
     )
 };
 
-export default FilmsHolder;
+export default OneRowFilmsHolder;
