@@ -3,7 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import {displayList, moviesArrayPaginated1, moviesArrayPaginated2,  next} from "../../scripts/pagination.js";
+import { displayList, moviesArrayPaginated1, moviesArrayPaginated2, disabled} from "../../scripts/pagination.js";
 
 import MovieCover from "../MovieCover.jsx";
 
@@ -11,7 +11,7 @@ function FilmsHolder(props){
 
     // set initial page 
     let current_page = useRef(0);
-    
+  //  let disabled= useRef(true);
     /* I'm using 2 different arrays to create 2 rows to display 
     * since I dont know how to make 2 rows with 6 columns from the same array
     */
@@ -21,7 +21,7 @@ function FilmsHolder(props){
     const holder = props.filmsHolder;
     let page = 0;
     let columns_per_page = 6;
-
+    let disabledButton = disabled;
      
     /** 
      * Function to get the inital sequence of items of the first row
@@ -52,6 +52,19 @@ function FilmsHolder(props){
        setRow2(moviesArrayPaginated2);
 
     }
+
+    function prevPage(){
+        if (current_page.current > 0) {
+            current_page.current = current_page.current - 1;
+            page = current_page.current
+            displayList("list1", columns_per_page, page);
+            displayList("list2", columns_per_page, page );
+     
+            setRow(moviesArrayPaginated1);
+            setRow2(moviesArrayPaginated2);
+        }
+
+    }
     
    
     return (
@@ -59,8 +72,16 @@ function FilmsHolder(props){
             <Container className={`filmsHolder-container ${holder}`} > 
                <nav className="pagination-container">
                
-                <button className="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page"> &lt; </button>
-                   <Stack direction="vertical">
+               {
+                disabledButton === true ?  
+                      <button className="pagination-button" id="next-button"  disabled title="Prev page" aria-label="Next page"
+                         >&lt;
+                      </button>
+                    : 
+                       <button className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
+                            onClick={() =>prevPage()} >&lt;
+                      </button>
+                  }                   <Stack direction="vertical">
                      
                      <Row onload={showRow1("list1", current_page)} className="list1">
                      { row.map((item, index) => {
