@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import MySpace from "./MySpace/MySpace";
 import Movies from "../Movies/Movies";
 import Series from "./Series/Series";
+import UpComing from "./UpComing/UpComing";
 
 function HomePage(){
     
@@ -16,7 +17,8 @@ function HomePage(){
               <NavTab />
               {/* <MySpace/> */}
               {/* <Movies/> */}
-              <Series />
+              {/* <Series /> */}
+              <UpComing/>
 
              </Container>
              <Footer/>
