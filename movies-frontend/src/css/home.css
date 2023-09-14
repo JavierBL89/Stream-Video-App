@@ -62,4 +62,19 @@ color: aliceblue;
 .list1{
     margin-bottom: 20px;
 }
+
+/*****************************         */
+
+ .section-container{
+
+    margin: 150px auto;
+}
+
+ .section-container h5{
+
+    font-size: 1.7rem;
+    /* padding-left: 50px; */
+    text-align: center;
+    text-transform: capitalize;
+}
 }

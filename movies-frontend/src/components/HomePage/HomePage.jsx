@@ -5,6 +5,7 @@ import NavTab from "./NavTab";
 import Footer from "../Footer/Footer";
 import MySpace from "./MySpace/MySpace";
 import Movies from "../Movies/Movies";
+import Series from "./Series/Series";
 
 function HomePage(){
     
@@ -14,7 +15,8 @@ function HomePage(){
             <Container fluid className="homepage-container">
               <NavTab />
               {/* <MySpace/> */}
-              <Movies/>
+              {/* <Movies/> */}
+              <Series />
 
              </Container>
              <Footer/>
