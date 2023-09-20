@@ -1,26 +1,42 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useMemo} from "react";
 import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { displayList, moviesArrayPaginated,  disabled} from "../../scripts/oneRowPagination.js";
+import { getAllMovies, allMovies} from "../../assets/js/fetchMoviesApi.js";
 
 import MovieCover from "../MovieCover.jsx";
 
 function OneRowFilmsHolder(props){
-
+    let allMovies = [];
     // set initial page 
     let current_page = useRef(0);
+    useEffect(()=> {        
+        fetch("http://localhost:8080/movies/all?pageNo=2&pageSize=6",{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+           .then(res=>res.json())
+           .then(result=>{
+                setRow(result)
+           })
+     },[])
+ 
   //  let disabled= useRef(true);
     /* I'm using 2 different arrays to create 2 rows to display 
     * since I dont know how to make 2 rows with 6 columns from the same array
     */
-    const [row, setRow] = useState (moviesArrayPaginated);
-
+    const [row, setRow] = useState ([]);
     const holder = props.filmsHolder;
     let page = 0;
     let columns_per_page = 6;
     let disabledButton = disabled;
+    
+
+    
      
     /** 
      * Function to get the inital sequence of items of the first row
@@ -28,6 +44,7 @@ function OneRowFilmsHolder(props){
     function showRow1 (listName, current_page){
         current_page = current_page.current;
         displayList(listName, columns_per_page, current_page)
+        //setRow(moviesArrayPaginated)
     }
 
     /***
@@ -70,9 +87,11 @@ function OneRowFilmsHolder(props){
                       </button>
                   }                   <Stack direction="vertical">
                      
-                     <Row onload={showRow1("list1", current_page)} className="list1">
+                     <Row className="list1">
                      { row.map((item, index) => {
-                             return <MovieCover key={index} img={item}/>
+                      console.log(allMovies)
+
+                             return <MovieCover key={index} img={item.poster_url}/>
                             })
                         }
                      </Row>

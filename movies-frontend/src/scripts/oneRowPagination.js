@@ -1,8 +1,7 @@
-import putos from "../fakeMovies.js";
+import {allMovies} from "../assets/js/fetchMoviesApi";
 
 
-const allMoviesArray = putos;
-let moviesArrayPaginated = [];
+let moviesArrayPaginated = allMovies;
 
 
 let disabled = false;
@@ -24,8 +23,7 @@ let end ;
          }
 
          // set the sequence of items to show
-            moviesArrayPaginated = allMoviesArray.slice(start, end);
-
+            moviesArrayPaginated = allMovies.slice(start, end);
     }
 
 
