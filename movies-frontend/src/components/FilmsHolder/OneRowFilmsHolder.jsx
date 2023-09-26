@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useMemo} from "react";
+import React, { useState, useRef, useEffect} from "react";
 import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { displayList, moviesArrayPaginated,  disabledButton} from "../../scripts/oneRowPagination.js";
+import { displayList } from "../../scripts/oneRowPagination.js";
 import { getAllMovies, allMovies} from "../../scripts/fetchMoviesApi.js";
 
 import MovieCover from "../MovieCover.jsx";
@@ -20,7 +20,6 @@ function OneRowFilmsHolder(props){
     const holder = props.filmsHolder;
     let page = 0;
     let columns_per_page = 6;
-    console.log(disabled_nextPageButton) ;
 
    
     // Make call to retrive data for the initial render state
@@ -43,16 +42,6 @@ function OneRowFilmsHolder(props){
         getAllMovies(current_page.current);
      },[])
  
-
-    /** 
-     * Function to get the inital sequence of items of the first row
-     */
-    function showRow1 ( current_page){
-        current_page = current_page.current;
-        displayList(columns_per_page, current_page)
-        //setRow(moviesArrayPaginated)
-    }
-
     /***
      * Function to get next sequence of movies to show
      */
