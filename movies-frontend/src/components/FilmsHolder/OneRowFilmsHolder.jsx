@@ -3,8 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { displayList } from "../../scripts/oneRowPagination.js";
-import { getAllMovies, allMovies} from "../../scripts/fetchMoviesApi.js";
+import { getAllMovies} from "../../scripts/fetchMoviesApi.js";
 
 import MovieCover from "../MovieCover.jsx";
 
@@ -16,6 +15,7 @@ function OneRowFilmsHolder(props){
     let columns_per_page = useRef(6);
     let disabled_nextPageButton = useRef(false);
     let disabled_prevPageButton = useRef(true);
+    let moviesArray = [];
     const [row, setRow] = useState ([]);
     const holder = props.filmsHolder;
     let page = 0;
@@ -32,14 +32,14 @@ function OneRowFilmsHolder(props){
         })
            .then(res=>res.json())
            .then(result=>{
-                setRow(result.slice(0,5))
+                setRow(result.slice(0,6))
            });
 
         /*** After setting initial render state,
         * make call to fill the allMovies array with data for pagination to work on next rendering
         * It also will have the very same first sequence of movies as our component state
         ***/
-        getAllMovies(current_page.current, columns_per_page);
+        getAllMovies(columns_per_page, current_page.current);
      },[])
  
     /***
@@ -48,16 +48,16 @@ function OneRowFilmsHolder(props){
     function nextPage(){
        current_page.current = current_page.current + 1;
        page = current_page.current;
-       displayList(columns_per_page, page);
-       setRow(allMovies);
+       moviesArray = getAllMovies(columns_per_page, page);
+       setRow(moviesArray.slice(0,6));
        buttonsControl(page);
     }
 
     function prevPage(){
             current_page.current = current_page.current - 1;
             page = current_page.current
-            displayList(columns_per_page, page);
-            setRow(allMovies);
+            moviesArray = getAllMovies(columns_per_page, page);
+            setRow(moviesArray.slice(0,6));
             buttonsControl(page);
 
     }
@@ -99,7 +99,6 @@ function OneRowFilmsHolder(props){
                      
                      <Row className="list1">
                      { row.map((item, index) => {
-
                              return <MovieCover key={index} img={item.poster_url}/>
                             })
                         }

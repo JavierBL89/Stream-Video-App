@@ -16,9 +16,9 @@ function HomePage(){
             <Container fluid className="homepage-container">
               <NavTab />
               {/* <MySpace/> */}
-              <Movies/>
+              {/* <Movies/> */}
               {/* <Series /> */}
-              {/* <UpComing/> */}
+              <UpComing/>
 
              </Container>
              <Footer/>
