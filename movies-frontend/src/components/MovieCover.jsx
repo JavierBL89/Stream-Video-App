@@ -5,7 +5,9 @@ import Container from "react-bootstrap/esm/Container";
 function MovieCover(props){
 
     return (
-        <Container fluid className="film-cover-img">{props.img}</Container>
+        <Container fluid className="film-cover-img">
+        <img src={props.img} className="movieImg"/>
+        </Container>
 
     )
 }

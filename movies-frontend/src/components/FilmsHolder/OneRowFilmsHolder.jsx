@@ -3,17 +3,29 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { displayList, moviesArrayPaginated,  disabled} from "../../scripts/oneRowPagination.js";
-import { getAllMovies, allMovies} from "../../assets/js/fetchMoviesApi.js";
+import { displayList, moviesArrayPaginated,  disabledButton} from "../../scripts/oneRowPagination.js";
+import { getAllMovies, allMovies} from "../../scripts/fetchMoviesApi.js";
 
 import MovieCover from "../MovieCover.jsx";
 
+
 function OneRowFilmsHolder(props){
-    let allMovies = [];
+
     // set initial page 
     let current_page = useRef(0);
-    useEffect(()=> {        
-        fetch("http://localhost:8080/movies/all?pageNo=2&pageSize=6",{
+    let page_size = useRef(6);
+    let disabled_nextPageButton = useRef(false);
+    let disabled_prevPageButton = useRef(true);
+    const [row, setRow] = useState ([]);
+    const holder = props.filmsHolder;
+    let page = 0;
+    let columns_per_page = 6;
+    console.log(disabled_nextPageButton) ;
+
+   
+    // Make call to retrive data for the initial render state
+    useEffect(()=> {   
+        fetch(`http://localhost:8080/movies/all?pageNo=${current_page.current}&pageSize=${page_size.current}`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,29 +33,23 @@ function OneRowFilmsHolder(props){
         })
            .then(res=>res.json())
            .then(result=>{
-                setRow(result)
-           })
+                setRow(result.slice(0,5))
+           });
+
+        /*** After setting initial render state,
+        * make call to fill the allMovies array with data for pagination to work on next rendering
+        * It also will have the very same first sequence of movies as our component state
+        ***/
+        getAllMovies(current_page.current);
      },[])
  
-  //  let disabled= useRef(true);
-    /* I'm using 2 different arrays to create 2 rows to display 
-    * since I dont know how to make 2 rows with 6 columns from the same array
-    */
-    const [row, setRow] = useState ([]);
-    const holder = props.filmsHolder;
-    let page = 0;
-    let columns_per_page = 6;
-    let disabledButton = disabled;
-    
 
-    
-     
     /** 
      * Function to get the inital sequence of items of the first row
      */
-    function showRow1 (listName, current_page){
+    function showRow1 ( current_page){
         current_page = current_page.current;
-        displayList(listName, columns_per_page, current_page)
+        displayList(columns_per_page, current_page)
         //setRow(moviesArrayPaginated)
     }
 
@@ -52,24 +58,39 @@ function OneRowFilmsHolder(props){
      */
     function nextPage(){
        current_page.current = current_page.current + 1;
-       page = current_page.current
-       displayList("list1", columns_per_page, page);
-       displayList("list2", columns_per_page, page );
-
-       setRow(moviesArrayPaginated);
-
+       page = current_page.current;
+       displayList(columns_per_page, page);
+       setRow(allMovies);
+       buttonsControl(page);
     }
 
     function prevPage(){
-        if (current_page.current > 0) {
             current_page.current = current_page.current - 1;
             page = current_page.current
-            displayList("list", columns_per_page, page);
-            setRow(moviesArrayPaginated);
-        }
+            displayList(columns_per_page, page);
+            setRow(allMovies);
+            buttonsControl(page);
 
     }
     
+    /**
+     * Function to change the pagination buttons state accordingly
+     ***/
+    function buttonsControl(page){
+        // controls prevPage button
+        if(page === 0){
+            disabled_prevPageButton.current = true;
+        }else if(page >=1){
+            disabled_prevPageButton.current = false;
+        }
+        // controls nextPage button
+        if(page === 9){
+            disabled_nextPageButton.current = true;
+            console.log(disabled_nextPageButton) ;
+        }else if(page < 9){
+              disabled_nextPageButton.current = false;
+        }
+    }
    
     return (
         <Container fluid className="filmsHolder-wraper">
@@ -77,19 +98,18 @@ function OneRowFilmsHolder(props){
                <nav className="pagination-container">
                
                {
-                disabledButton === true ?  
+                disabled_prevPageButton.current === true ?  
                       <button className="pagination-button" id="next-button"  disabled title="Prev page" aria-label="Next page"
                          >&lt;
                       </button>
                     : 
                        <button className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
-                            onClick={() =>prevPage()} >&lt;
+                            onClick={() => prevPage()} >&lt;
                       </button>
                   }                   <Stack direction="vertical">
                      
                      <Row className="list1">
                      { row.map((item, index) => {
-                      console.log(allMovies)
 
                              return <MovieCover key={index} img={item.poster_url}/>
                             })
@@ -98,10 +118,9 @@ function OneRowFilmsHolder(props){
 
                    </Stack>
                    
-                   {/*** if array length is less than 6 display disabled button 
-                   *** else enabled button ****/}
                    {
-                    row.length < 6 ?  
+                    // If page_count is 10, nextPage button will be disabled
+                    disabled_nextPageButton.current === true ? 
                       <button className="pagination-button" id="next-button" disabled title="Next page" aria-label="Next page"
                             onClick={() =>nextPage()} >&gt;
                       </button>
