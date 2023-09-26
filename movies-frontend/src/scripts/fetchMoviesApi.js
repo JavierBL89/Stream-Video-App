@@ -1,10 +1,7 @@
 let allMovies= [];
 
-const getAllMovies = (page) =>{
-    console.log("ee");
-    let page_size = 6;
-
-    fetch(`http://localhost:8080/movies/all?pageNo=${page}&pageSize=${page_size}`,{
+const getAllMovies = (columns_per_page, page) =>{
+    fetch(`http://localhost:8080/movies/all?pageNo=${page}&pageSize=${columns_per_page}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

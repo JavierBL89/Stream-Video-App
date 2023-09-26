@@ -3,7 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { displayList, moviesArray1, moviesArray2, disabled } from "../../scripts/twoRowsPagination.js";
+import { getAllMovies} from "../../scripts/fetchMoviesApi.js";
 
 import MovieCover from "../MovieCover.jsx";
 
@@ -11,20 +11,20 @@ function TwoRowsFilmsHolder(props){
 
      // set initial page 
      let current_page = useRef(0);
-     let page_size = useRef(6);
+     let columns_per_page = useRef(13);
      let disabled_nextPageButton = useRef(false);
      let disabled_prevPageButton = useRef(true);
+     let moviesArray = [];
      const [row, setRow] = useState ([]);
      const [row2, setRow2] = useState ([]);
      const holder = props.filmsHolder;
      let page = 0;
-     let columns_per_page = 12;
- 
+    columns_per_page = columns_per_page.current;
     
     
     // Make call to retrive data for the initial render state
     useEffect(()=> {        
-        fetch(`http://localhost:8080/movies/all?pageNo=${current_page.current}&pageSize=${page_size.current}`,{
+        fetch(`http://localhost:8080/movies/all?pageNo=${current_page.current}&pageSize=${columns_per_page}`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,46 +32,36 @@ function TwoRowsFilmsHolder(props){
         })
            .then(res=>res.json())
            .then(result=>{
-                setRow(result.slice(0,5));
-                setRow2(result.slice(5,-1));
+                setRow(result.slice(0,6));
+                setRow2(result.slice(6,-1));
            })
-     },[])  //  let disabled= useRef(true);
-   
-    /** 
-     * Function to get the inital sequence of items of the first row
-     */
-    function showRow (current_page){
-        current_page = current_page.current;
-        displayList(columns_per_page, current_page)
-    }
 
-  
+           getAllMovies(columns_per_page, current_page.current);
+
+     },[]) 
+   
     /***
      * Function to get next sequence of movies to show
      */
     function nextPage(){
        current_page.current = current_page.current + 1;
        page = current_page.current;
-       displayList(columns_per_page, page);
-
-       setRow(moviesArray1);
-       setRow2(moviesArray2);
+       moviesArray = getAllMovies(columns_per_page, page)
+       setRow(moviesArray.slice(0,6));
+       setRow2(moviesArray.slice(6,-1));
        buttonsControl(page);
-
-
     }
 
+      /***
+     * Function to get next sequence of movies to show
+     */
     function prevPage(){
-        if (current_page.current > 0) {
-            current_page.current = current_page.current - 1;
-            page = current_page.current;
-            displayList(columns_per_page, page );
-     
-            setRow(moviesArray1);
-            setRow2(moviesArray2);
-            buttonsControl(page);
-
-        }
+        current_page.current = current_page.current - 1;
+        page = current_page.current;
+        moviesArray = getAllMovies(columns_per_page, page)
+        setRow(moviesArray.slice(0,6));
+        setRow2(moviesArray.slice(6,-1));
+        buttonsControl(page);
 
     }
     
@@ -95,7 +85,7 @@ function TwoRowsFilmsHolder(props){
 
     return (
         <Container fluid className="filmsHolder-wraper">
-            <Container onload={showRow(current_page)} fluid className={`filmsHolder-container ${holder}`} > 
+            <Container fluid className={`filmsHolder-container ${holder}`} > 
                <nav className="pagination-container">
                
                {
@@ -128,7 +118,7 @@ function TwoRowsFilmsHolder(props){
                    {
                     disabled_nextPageButton.current === true ?  
                       <button className="pagination-button" id="next-button" disabled title="Next page" aria-label="Next page"
-                            onClick={() =>nextPage()} >&gt;
+                            onClick={() => nextPage()} >&gt;
                       </button>
                     : 
                        <button className="pagination-button" id="next-button" title="Next page" aria-label="Next page"

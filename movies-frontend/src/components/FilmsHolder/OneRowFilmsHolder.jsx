@@ -13,18 +13,18 @@ function OneRowFilmsHolder(props){
 
     // set initial page 
     let current_page = useRef(0);
-    let page_size = useRef(6);
+    let columns_per_page = useRef(6);
     let disabled_nextPageButton = useRef(false);
     let disabled_prevPageButton = useRef(true);
     const [row, setRow] = useState ([]);
     const holder = props.filmsHolder;
     let page = 0;
-    let columns_per_page = 6;
+    columns_per_page = columns_per_page.current;
 
    
     // Make call to retrive data for the initial render state
     useEffect(()=> {   
-        fetch(`http://localhost:8080/movies/all?pageNo=${current_page.current}&pageSize=${page_size.current}`,{
+        fetch(`http://localhost:8080/movies/all?pageNo=${current_page.current}&pageSize=${columns_per_page}`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ function OneRowFilmsHolder(props){
         * make call to fill the allMovies array with data for pagination to work on next rendering
         * It also will have the very same first sequence of movies as our component state
         ***/
-        getAllMovies(current_page.current);
+        getAllMovies(current_page.current, columns_per_page);
      },[])
  
     /***
