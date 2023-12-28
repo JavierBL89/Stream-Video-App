@@ -8,23 +8,23 @@ import Movies from "../Movies/Movies";
 import Series from "./Series/Series";
 import UpComing from "./UpComing/UpComing";
 
-function HomePage(){
-    
-        return(
-            <Container fluid className="homepage-wraper">
-            <AppNavbar/>
-            <Container fluid className="homepage-container">
-              <NavTab />
-              {/* <MySpace/> */}
-              {/* <Movies/> */}
-              {/* <Series /> */}
-              <UpComing/>
+function HomePage() {
 
-             </Container>
-             <Footer/>
-              </Container>
+        return (
+                <Container fluid className="homepage-wraper">
+                        <AppNavbar />
+                        <Container fluid className="homepage-container">
+                                <NavTab />
+                                <MySpace />
+                                {/* <Movies/> */}
+                                {/* <Series /> */}
+                                {/* <UpComing/> */}
+
+                        </Container>
+                        <Footer />
+                </Container>
         )
-    
+
 };
 
 
