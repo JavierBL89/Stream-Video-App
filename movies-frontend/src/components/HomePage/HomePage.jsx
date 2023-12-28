@@ -13,12 +13,13 @@ function HomePage() {
         return (
                 <Container fluid className="homepage-wraper">
                         <AppNavbar />
-                        <Container fluid className="homepage-container">
-                                <NavTab />
+                        <NavTab />
+
+                        <Container fluid className="homepage-container" id="puta">
                                 <MySpace />
-                                {/* <Movies/> */}
-                                {/* <Series /> */}
-                                {/* <UpComing/> */}
+                                <Movies />
+                                <Series />
+                                <UpComing />
 
                         </Container>
                         <Footer />
