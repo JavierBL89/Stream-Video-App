@@ -18,7 +18,7 @@ function SingleRowHolder(props) {
     let disabled_prevPageButton = useRef(true);
     const num_of_columns = useRef(6);
     let moviesArray = [];
-    const category = props.category;
+    let category = props.category;
     let page = 0;
     // const url = `http://localhost:8080/movies/${props.category}?pageNo=${current_page.current}&pageSize=${columns_per_page}`;
 
@@ -92,7 +92,6 @@ function SingleRowHolder(props) {
 
                         <Row className="list1">
                             {moviesArray.map((item, index) => {
-                                console.log(item.name)
                                 return <MovieCover key={index} img={item.poster_url} />
                             })
                             }
