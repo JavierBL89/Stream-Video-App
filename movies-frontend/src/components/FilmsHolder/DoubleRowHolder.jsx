@@ -3,66 +3,57 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { getNextPage, getPreviousPage } from "../../scripts/fetchMoviesApi.js";
+import { usePagination } from "../Hooks/pagination.jsx"
 
 import MovieCover from "../MovieCover.jsx";
 
-function TwoRowsFilmsHolder(props) {
-
+function DoubleRowHolder(props) {
     // set initial page 
-    let current_page = useRef(0);
-    let columns_per_page = useRef(13);
     let disabled_nextPageButton = useRef(false);
     let disabled_prevPageButton = useRef(true);
+    const num_of_columns = useRef(12);
     let moviesArray = [];
-    const [row, setRow] = useState([]);
-    const [row2, setRow2] = useState([]);
-    const holder = props.listTitle;
+    const category = props.category;
     let page = 0;
-    columns_per_page = columns_per_page.current;
+    // const url = `http://localhost:8080/movies/${props.category}?pageNo=${current_page.current}&pageSize=${columns_per_page}`;
+
+    // const { data: movies, loading, error } = useFetchMovies(url);
+    let { data: listOfMovies, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
+
+    moviesArray = listOfMovies;
 
 
-    // Make call to retrive data for the initial render state
-    useEffect(() => {
-        fetch(`http://localhost:8080/movies/all?pageNo=${current_page.current}&pageSize=${columns_per_page}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(res => res.json())
-            .then(result => {
-                setRow(result.slice(0, 6));
-                setRow2(result.slice(6, -1));
-            })
+    // let current_page = useRef(0);
+    // let columns_per_page = useRef(13);
+    // let disabled_nextPageButton = useRef(false);
+    // let disabled_prevPageButton = useRef(true);
+    // let moviesArray = [];
+    // const [row, setRow] = useState([]);
+    // const [row2, setRow2] = useState([]);
+    // const holder = props.listTitle;
+    // let page = 0;
+    // columns_per_page = columns_per_page.current;
 
-        getNextPage(columns_per_page, current_page.current);
-        console.log(props.category);
-
-    }, [])
-
-    /***
-     * Function to get next sequence of movies to show
+    /**
+     * The function "handleNextPage" is used to handle the event of clicking 
+     * on a button and then calling
+     * the "goToNextPage" function with the category as a parameter.
      */
-    function nextPage() {
-        current_page.current = current_page.current + 1;
-        page = current_page.current;
-        moviesArray = getNextPage(columns_per_page, page)
-        setRow(moviesArray.slice(0, 6));
-        setRow2(moviesArray.slice(6, -1));
+    function handleNextPage(event) {
+        let category = event.target.name
         buttonsControl(page);
+        goToNextPage(category, num_of_columns.current)
     }
 
-    /***
-   * Function to get next sequence of movies to show
-   */
-    function prevPage() {
-        current_page.current = current_page.current - 1;
-        page = current_page.current;
-        moviesArray = getPreviousPage(columns_per_page, page)
-        setRow(moviesArray.slice(0, 6));
-        setRow2(moviesArray.slice(6, -1));
+
+    /**
+     * The function "handlePrevPage" is used to handle the event of clicking
+     *  on a button and then calling 
+     * the goToPrevPage function with the category as a parameter.
+     */
+    function handlePrevPage() {
         buttonsControl(page);
+        goToPrevPage(category)
 
     }
 
@@ -86,7 +77,7 @@ function TwoRowsFilmsHolder(props) {
 
     return (
         <Container fluid className="filmsHolder-wraper">
-            <Container fluid className={`filmsHolder-container ${holder}`} >
+            <Container fluid className={`filmsHolder-container ${category}`} >
                 <nav className="pagination-container">
 
                     {
@@ -96,18 +87,18 @@ function TwoRowsFilmsHolder(props) {
                             </button>
                             :
                             <button className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
-                                onClick={() => prevPage()} >&lt;
+                                onClick={() => handlePrevPage()} >&lt;
                             </button>
                     }                   <Stack direction="vertical">
 
                         <Row className="list1">
-                            {row.map((item, index) => {
+                            {moviesArray.slice(0, 6).map((item, index) => {
                                 return <MovieCover key={index} img={item.poster_url} />
                             })
                             }
                         </Row>
                         <Row className="list2">
-                            {row2.map((item, index) => {
+                            {moviesArray.slice(7, 13).map((item, index) => {
                                 return <MovieCover key={index} img={item.poster_url} />
                             })
                             }
@@ -119,11 +110,11 @@ function TwoRowsFilmsHolder(props) {
                     {
                         disabled_nextPageButton.current === true ?
                             <button className="pagination-button" id="next-button" disabled title="Next page" aria-label="Next page"
-                                onClick={() => nextPage()} >&gt;
+                                onClick={() => handleNextPage()} >&gt;
                             </button>
                             :
                             <button className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
-                                onClick={() => nextPage()} >&gt;
+                                onClick={() => handleNextPage()} >&gt;
                             </button>
                     }
 
@@ -134,4 +125,4 @@ function TwoRowsFilmsHolder(props) {
     )
 };
 
-export default TwoRowsFilmsHolder;
+export default DoubleRowHolder;

@@ -16,17 +16,15 @@ function SingleRowHolder(props) {
     // set initial page 
     let disabled_nextPageButton = useRef(false);
     let disabled_prevPageButton = useRef(true);
-
+    const num_of_columns = useRef(6);
     let moviesArray = [];
     const category = props.category;
     let page = 0;
     // const url = `http://localhost:8080/movies/${props.category}?pageNo=${current_page.current}&pageSize=${columns_per_page}`;
 
     // const { data: movies, loading, error } = useFetchMovies(url);
-    let { data: listOfMovies, loading, error, goToNextPage, goToPrevPage } = usePagination(category);
-    if (!error) {
-        console.log("puta");
-    }
+    let { data: listOfMovies, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
+
     moviesArray = listOfMovies;
 
 
@@ -38,8 +36,9 @@ function SingleRowHolder(props) {
      */
     function handleNextPage(event) {
         let category = event.target.name
+
         buttonsControl(page);
-        goToNextPage(category)
+        goToNextPage(category, num_of_columns.current)
     }
 
 

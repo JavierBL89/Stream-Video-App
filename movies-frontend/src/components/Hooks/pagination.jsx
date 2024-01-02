@@ -8,7 +8,7 @@ import { useFetchMovies } from "./fetchMovies.jsx"
  *  with the following properties:
  *    { data, loading, error, goToNextPage, goToPrevPage };
  */
-const usePagination = (listType) => {
+const usePagination = (listType, num_of_columns) => {
     const pagesState = {
         "top20": { page: 0, columns_per_page: 6 },
         "nextWeek": { page: 0, columns_per_page: 6 },
@@ -18,25 +18,36 @@ const usePagination = (listType) => {
         "action": { page: 0, columns_per_page: 6 },
         "drama": { page: 0, columns_per_page: 6 },
         "comedy": { page: 0, columns_per_page: 6 },
-        "romantic comedies": { page: 0, columns_per_page: 6 }
+        "romantic comedies": { page: 0, columns_per_page: 6 },
+        "popular series": { page: 0, columns_per_page: 6 },
+        "eng series": { page: 0, columns_per_page: 6 },
+        "usa series": { page: 0, columns_per_page: 6 }
+
     }
 
     const [pages, setPages] = useState(pagesState);
     let url;
     let category = listType;
+    let columns = num_of_columns;
 
 
     /**
      * The function `goToNextPage` updates the page number 
      * for a given category in a state variable called `pages`.
      */
-    const goToNextPage = (listName) => {
+    const goToNextPage = (listName, cols) => {
+        console.log(num_of_columns);
         category = listName;
+        columns = cols;
         setPages((prevState) => ({
             ...prevState,
-            [category]: { ...prevState[category], page: prevState[category].page + 1 }
-
+            [category]: {
+                ...prevState[category],
+                page: prevState[category].page + 1,
+                columns_per_page: columns
+            }
         }));
+
     }
 
     /**
@@ -47,7 +58,11 @@ const usePagination = (listType) => {
         category = listName;
         setPages((prevState) => ({
             ...prevState,
-            [category]: { ...prevState[category], page: prevState[category].page - 1 }
+            [category]: {
+                ...prevState[category],
+                page: prevState[category].page - 1,
+                columns_per_page: prevState[category].columns_per_page = num_of_columns
+            }
 
         }));
     }
