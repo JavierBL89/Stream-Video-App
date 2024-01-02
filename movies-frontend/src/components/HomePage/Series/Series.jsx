@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import OneRowFilmHolder from "../../FilmsHolder/OneRowFilmsHolder";
-import TwoRowFilmHolder from "../../FilmsHolder/TwoRowsFilmsHolder";
+import OneRowFilmHolder from "../../FilmsHolder/SingleRowHolder";
+import TwoRowFilmHolder from "../../FilmsHolder/DoubleRowHolder";
 import SectionPerGender from "../SectionPerGender";
 
 

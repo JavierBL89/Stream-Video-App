@@ -7,9 +7,26 @@ function UpComing() {
     return (
         <Container fluid className="upcoming-wraper hidden" id="upcoming">
             <Container fluid className="upcoming-container">
-                <SectionPerGender title="next week" className="upNextWeek" numberOfRows="1" />
-                <SectionPerGender title="from england" className="engUpComing" numberOfRows="1" />
-                <SectionPerGender title="from usa" className="usaUpComing" numberOfRows="1" />
+                <SectionPerGender
+                    listTitle="next week"
+                    category="nextWeek"
+                    className="upNextWeek"
+                    numberOfRows="1"
+
+                />
+                <SectionPerGender
+                    listTitle="from england"
+                    category="eng"
+                    className="engUpComing"
+                    numberOfRows="1"
+
+                />
+                <SectionPerGender
+                    listTitle="from usa"
+                    category="usa"
+                    className="usaUpComing"
+                    numberOfRows="1"
+                />
             </Container>
         </Container>
     )

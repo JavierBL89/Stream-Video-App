@@ -3,21 +3,21 @@ import Container from "react-bootstrap/esm/Container";
 import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { getNextPage, getPreviousPage, allMovies } from "../../scripts/fetchMoviesApi.js";
+import { getNextPage, getPreviousPage } from "../../scripts/fetchMoviesApi.js";
 
 import MovieCover from "../MovieCover.jsx";
 
-
-function OneRowFilmsHolder(props) {
+function TwoRowsFilmsHolder(props) {
 
     // set initial page 
     let current_page = useRef(0);
-    let columns_per_page = useRef(6);
+    let columns_per_page = useRef(13);
     let disabled_nextPageButton = useRef(false);
     let disabled_prevPageButton = useRef(true);
     let moviesArray = [];
     const [row, setRow] = useState([]);
-    const holder = props.filmsHolder;
+    const [row2, setRow2] = useState([]);
+    const holder = props.listTitle;
     let page = 0;
     columns_per_page = columns_per_page.current;
 
@@ -32,57 +32,53 @@ function OneRowFilmsHolder(props) {
         })
             .then(res => res.json())
             .then(result => {
-                setRow(result.slice(0, 6))
-            });
+                setRow(result.slice(0, 6));
+                setRow2(result.slice(6, -1));
+            })
 
-        /*** After setting initial render state,
-        * make call to fill the allMovies array in advance with data for next page of movies to render
-        * It also will have the very same first sequence of movies as our component state
-        ***/
         getNextPage(columns_per_page, current_page.current);
+        console.log(props.category);
+
     }, [])
 
     /***
-     * Function to get next sequence of movies
+     * Function to get next sequence of movies to show
      */
     function nextPage() {
         current_page.current = current_page.current + 1;
         page = current_page.current;
-        moviesArray = allMovies;
+        moviesArray = getNextPage(columns_per_page, page)
         setRow(moviesArray.slice(0, 6));
+        setRow2(moviesArray.slice(6, -1));
         buttonsControl(page);
-        getNextPage(columns_per_page, page);
     }
 
     /***
-     * Function to get the previous sequence of movies
-     */
+   * Function to get next sequence of movies to show
+   */
     function prevPage() {
         current_page.current = current_page.current - 1;
-        page = current_page.current
-        moviesArray = allMovies;
+        page = current_page.current;
+        moviesArray = getPreviousPage(columns_per_page, page)
         setRow(moviesArray.slice(0, 6));
+        setRow2(moviesArray.slice(6, -1));
         buttonsControl(page);
-        //prevent fetch page bellow number 0
-        if (current_page.current >= 1) {
-            getPreviousPage(columns_per_page, page);
-        }
+
     }
 
     /**
-     * Function to change the pagination buttons state accordingly
-     ***/
+      * Function to change the pagination buttons state accordingly
+      ***/
     function buttonsControl(page) {
         // controls prevPage button
         if (page === 0) {
             disabled_prevPageButton.current = true;
-        } else if (page > 0) {
+        } else if (page >= 1) {
             disabled_prevPageButton.current = false;
         }
         // controls nextPage button
         if (page === 9) {
             disabled_nextPageButton.current = true;
-            console.log(disabled_nextPageButton);
         } else if (page < 9) {
             disabled_nextPageButton.current = false;
         }
@@ -110,11 +106,17 @@ function OneRowFilmsHolder(props) {
                             })
                             }
                         </Row>
-
+                        <Row className="list2">
+                            {row2.map((item, index) => {
+                                return <MovieCover key={index} img={item.poster_url} />
+                            })
+                            }
+                        </Row>
                     </Stack>
 
+                    {/*** if array length is less than 6 display disabled button 
+                   *** else enabled button ****/}
                     {
-                        // If page_count is 10, nextPage button will be disabled
                         disabled_nextPageButton.current === true ?
                             <button className="pagination-button" id="next-button" disabled title="Next page" aria-label="Next page"
                                 onClick={() => nextPage()} >&gt;
@@ -132,4 +134,4 @@ function OneRowFilmsHolder(props) {
     )
 };
 
-export default OneRowFilmsHolder;
+export default TwoRowsFilmsHolder;
