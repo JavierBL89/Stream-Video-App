@@ -27,6 +27,9 @@ public interface MovieRepository extends MongoRepository <Movie, String> {
 	
 	@Query("{'_id': {$gte:'tt0249999',$lte:'tt0269999'}}")
 	Page<Movie> findEnglishMovies(Pageable pageableBase);
+	
+	@Query("{'_id':{$gte: 'tt0229999', $lte: 'tt0249998'}}")
+	Page<Movie> findNextWeekMovies(Pageable pageableBase);
 
 	@Query("{'ratingValue': {$gte:'7.0',$lte:'8.0'}}")
 	Page<Movie> findTop20Movies(Pageable pageableBase);

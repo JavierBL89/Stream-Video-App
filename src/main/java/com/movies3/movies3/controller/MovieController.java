@@ -53,6 +53,12 @@ public class MovieController {
 			return movieServiceImpl.getTop20Movies(pageNo, pageSize);
 		}
 	
+	@GetMapping("/movies/nextWeek")
+	public @ResponseBody List<Movie> getNextWeekMovies(
+			@RequestParam(value = "pagNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getTop20Movies(pageNo, pageSize);
+	}
 
 	@GetMapping("/movies/{id}")
 	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){

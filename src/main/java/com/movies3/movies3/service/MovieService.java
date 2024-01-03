@@ -29,6 +29,9 @@ public interface MovieService {
 	// top20
 	public List<Movie> getTop20Movies(int pageNo, int pageSize);
 	
+	// nextWeek 
+	public List<Movie> getNextMovies(int pageNo, int pageSize);
+	
 	Movie save(Movie movie);
 
 	Optional<Movie> singleMovie(String id);
