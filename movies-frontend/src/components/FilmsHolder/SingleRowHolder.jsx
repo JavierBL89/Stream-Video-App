@@ -22,7 +22,7 @@ function SingleRowHolder(props) {
     let listCurrentPage;
     let category = props.category;
 
-    let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
+    let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns.current);
     moviesArray = listOfMovies;
 
 

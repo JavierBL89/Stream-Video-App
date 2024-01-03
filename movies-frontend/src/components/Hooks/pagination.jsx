@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetchMovies } from "./fetchMovies.jsx"
 
 /**
@@ -9,26 +9,11 @@ import { useFetchMovies } from "./fetchMovies.jsx"
  **    { data, loading, error, goToNextPage, goToPrevPage };
  */
 const usePagination = (listType, num_of_columns) => {
-    const pagesState = {
-        "top20": { page: 0, columns_per_page: 6 },
-        "nextWeek": { page: 0, columns_per_page: 6 },
-        "usa": { page: 0, columns_per_page: 6 },
-        "eng": { page: 0, columns_per_page: 6 },
-        "trends": { page: 0, columns_per_page: 6 },
-        "action": { page: 0, columns_per_page: 6 },
-        "drama": { page: 0, columns_per_page: 6 },
-        "comedy": { page: 0, columns_per_page: 6 },
-        "romantic comedies": { page: 0, columns_per_page: 6 },
-        "popular series": { page: 0, columns_per_page: 6 },
-        "eng series": { page: 0, columns_per_page: 6 },
-        "usa series": { page: 0, columns_per_page: 6 }
-
-    }
-
-    const [pages, setPages] = useState(pagesState);
     let url;
     let category = listType;
     let columns = num_of_columns;
+
+    const [pages, setPages] = useState({ [category]: { page: 0, columns_per_page: columns } });
 
 
     /**
@@ -36,7 +21,6 @@ const usePagination = (listType, num_of_columns) => {
      * for a given category in a state variable called `pages`.
      */
     const goToNextPage = (listName, cols) => {
-        console.log(num_of_columns);
         category = listName;
         columns = cols;
         setPages((prevState) => ({
@@ -74,6 +58,7 @@ const usePagination = (listType, num_of_columns) => {
     the value of 0. */
     let current_page = pages[category]?.page ?? 0;
     let columns_per_page = pages[category]?.columns_per_page ?? 6;
+    console.log();
     url = `http://localhost:8080/movies/${category}?pageNo=${current_page}&pageSize=${columns_per_page}`;
 
     let { data, loading, error } = useFetchMovies(url);
