@@ -6,7 +6,7 @@ import { useFetchMovies } from "./fetchMovies.jsx"
  * of movies dinamically.
  * @returns The function `usePagination` returns an object
  *  with the following properties:
- *    { data, loading, error, goToNextPage, goToPrevPage };
+ **    { data, loading, error, goToNextPage, goToPrevPage };
  */
 const usePagination = (listType, num_of_columns) => {
     const pagesState = {
