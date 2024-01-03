@@ -55,13 +55,14 @@ const usePagination = (listType, num_of_columns) => {
      * a specific category in the state by decrementing it by 1.
      */
     const goToPrevPage = (listName) => {
+        console.log(listName);
         category = listName;
+        console.log(category);
         setPages((prevState) => ({
             ...prevState,
             [category]: {
                 ...prevState[category],
-                page: prevState[category].page - 1,
-                columns_per_page: prevState[category].columns_per_page = num_of_columns
+                page: prevState[category].page - 1
             }
 
         }));
@@ -77,7 +78,7 @@ const usePagination = (listType, num_of_columns) => {
 
     let { data, loading, error } = useFetchMovies(url);
 
-    return { data, loading, error, goToNextPage, goToPrevPage };
+    return { data, pages, loading, error, goToNextPage, goToPrevPage };
 
 }
 

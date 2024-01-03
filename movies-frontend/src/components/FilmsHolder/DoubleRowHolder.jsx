@@ -4,6 +4,7 @@ import Stack from "react-bootstrap/esm/Stack";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { usePagination } from "../Hooks/pagination.jsx"
+import { buttonsController } from "../../scripts/buttonsController.js";
 
 import MovieCover from "../MovieCover.jsx";
 
@@ -13,36 +14,29 @@ function DoubleRowHolder(props) {
     let disabled_prevPageButton = useRef(true);
     const num_of_columns = useRef(12);
     let moviesArray = [];
-    const category = props.category;
-    let page = 0;
-    // const url = `http://localhost:8080/movies/${props.category}?pageNo=${current_page.current}&pageSize=${columns_per_page}`;
+    let listCurrentPage;
+    let category = props.category;
 
-    // const { data: movies, loading, error } = useFetchMovies(url);
-    let { data: listOfMovies, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
-
+    /** Use the `usePagination` custom hook to destructure
+     the returned values into separate variables. **/
+    let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
     moviesArray = listOfMovies;
 
 
-    // let current_page = useRef(0);
-    // let columns_per_page = useRef(13);
-    // let disabled_nextPageButton = useRef(false);
-    // let disabled_prevPageButton = useRef(true);
-    // let moviesArray = [];
-    // const [row, setRow] = useState([]);
-    // const [row2, setRow2] = useState([]);
-    // const holder = props.listTitle;
-    // let page = 0;
-    // columns_per_page = columns_per_page.current;
-
     /**
-     * The function "handleNextPage" is used to handle the event of clicking 
-     * on a button and then calling
-     * the "goToNextPage" function with the category as a parameter.
-     */
+    * The function "handleNextPage" is used to handle the event of clicking 
+    * on a button and then calling
+    * the "goToNextPage" function with the category as a parameter.
+    */
     function handleNextPage(event) {
         let category = event.target.name
-        buttonsControl(page);
+        listCurrentPage = pages[category].page;
         goToNextPage(category, num_of_columns.current)
+        /* buttonsController is a function that returns an object with two
+        properties for updating the incrementing and decrementing buttons state */
+        const { newNextButtonState, newPrevButtonState } = buttonsController(listCurrentPage + 1);
+        disabled_nextPageButton.current = newNextButtonState;
+        disabled_prevPageButton.current = newPrevButtonState;
     }
 
 
@@ -51,29 +45,17 @@ function DoubleRowHolder(props) {
      *  on a button and then calling 
      * the goToPrevPage function with the category as a parameter.
      */
-    function handlePrevPage() {
-        buttonsControl(page);
-        goToPrevPage(category)
-
+    function handlePrevPage(event) {
+        let category = event.target.name;
+        listCurrentPage = pages[category].page - 1;
+        goToPrevPage(category);
+        /* buttonsController is a function that returns an object with two
+          properties for updating the incrementing and decrementing buttons state */
+        const { newNextButtonState, newPrevButtonState } = buttonsController(listCurrentPage + 1);
+        disabled_nextPageButton.current = newNextButtonState;
+        disabled_prevPageButton.current = newPrevButtonState;
     }
 
-    /**
-      * Function to change the pagination buttons state accordingly
-      ***/
-    function buttonsControl(page) {
-        // controls prevPage button
-        if (page === 0) {
-            disabled_prevPageButton.current = true;
-        } else if (page >= 1) {
-            disabled_prevPageButton.current = false;
-        }
-        // controls nextPage button
-        if (page === 9) {
-            disabled_nextPageButton.current = true;
-        } else if (page < 9) {
-            disabled_nextPageButton.current = false;
-        }
-    }
 
     return (
         <Container fluid className="filmsHolder-wraper">

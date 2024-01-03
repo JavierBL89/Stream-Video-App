@@ -5,6 +5,7 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { usePagination } from "../Hooks/pagination.jsx"
 import MovieCover from "../MovieCover.jsx";
+import { buttonsController } from "../../scripts/buttonsController.js";
 
 
 /**
@@ -18,13 +19,10 @@ function SingleRowHolder(props) {
     let disabled_prevPageButton = useRef(true);
     const num_of_columns = useRef(6);
     let moviesArray = [];
+    let listCurrentPage;
     let category = props.category;
-    let page = 0;
-    // const url = `http://localhost:8080/movies/${props.category}?pageNo=${current_page.current}&pageSize=${columns_per_page}`;
 
-    // const { data: movies, loading, error } = useFetchMovies(url);
-    let { data: listOfMovies, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
-
+    let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns);
     moviesArray = listOfMovies;
 
 
@@ -36,9 +34,13 @@ function SingleRowHolder(props) {
      */
     function handleNextPage(event) {
         let category = event.target.name
-
-        buttonsControl(page);
+        listCurrentPage = pages[category].page;
         goToNextPage(category, num_of_columns.current)
+        /* buttonsController is a function that returns an object with two
+        properties for updating the incrementing and decrementing buttons state */
+        const { newNextButtonState, newPrevButtonState } = buttonsController(listCurrentPage + 1);
+        disabled_nextPageButton.current = newNextButtonState;
+        disabled_prevPageButton.current = newPrevButtonState;
     }
 
 
@@ -47,32 +49,18 @@ function SingleRowHolder(props) {
      *  on a button and then calling 
      * the goToPrevPage function with the category as a parameter.
      */
-    function handlePrevPage() {
-        buttonsControl(page);
-        goToPrevPage(category)
-
+    function handlePrevPage(event) {
+        let category = event.target.name;
+        listCurrentPage = pages[category].page - 1;
+        goToPrevPage(category);
+        /* buttonsController is a function that returns an object with two
+          properties for updating the incrementing and decrementing buttons state */
+        const { newNextButtonState, newPrevButtonState } = buttonsController(listCurrentPage + 1);
+        disabled_nextPageButton.current = newNextButtonState;
+        disabled_prevPageButton.current = newPrevButtonState;
     }
 
 
-    /**
-     * The function `buttonsControl` controls the disabled state of
-     * the previous and next page buttons based on the current page number.
-     */
-    function buttonsControl(page) {
-        // controls prevPage button
-        if (page === 0) {
-            disabled_prevPageButton.current = true;
-        } else if (page > 0) {
-            disabled_prevPageButton.current = false;
-        }
-        // controls nextPage button
-        if (page === 9) {
-            disabled_nextPageButton.current = true;
-            console.log(disabled_nextPageButton);
-        } else if (page < 9) {
-            disabled_nextPageButton.current = false;
-        }
-    }
 
     return (
         <Container fluid className="filmsHolder-wraper">
@@ -81,12 +69,12 @@ function SingleRowHolder(props) {
 
                     {
                         disabled_prevPageButton.current === true ?
-                            <button className="pagination-button" id="next-button" disabled title="Prev page" aria-label="Next page"
-                            >&lt;
+                            <button name={`${category}`} className="pagination-button" id="next-button" disabled title="Prev page" aria-label="Next page"
+                                onClick={(event) => handlePrevPage(event)} >&lt;
                             </button>
                             :
-                            <button className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
-                                onClick={() => handlePrevPage()} >&lt;
+                            <button name={`${category}`} className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
+                                onClick={(event) => handlePrevPage(event)} >&lt;
                             </button>
                     }                   <Stack direction="vertical">
 
