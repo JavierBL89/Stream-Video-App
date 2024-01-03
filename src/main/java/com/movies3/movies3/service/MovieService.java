@@ -12,10 +12,25 @@ import com.movies3.movies3.model.Movie;
 public interface MovieService {
 
 	// database access method
-	public List<Movie> allMovies();
+	public List<Movie> allMovies(int pageNo, int pageSize);
+	
+	// continueWatching
+	public List<Movie> getContinueWatching(int pageNo, int pageSize);
+	
+	// myList
+	public List<Movie> getMyList(int pageNo, int pageSize);
 
+	// englishMovies
+	public List<Movie> getEnglishMovies(int pageNo, int pageSize);
+		
+	// americanMovies
+	public List<Movie> getAmericanMovies(int pageNo, int pageSize);
+	
+	// top20
+	public List<Movie> getTop20Movies(int pageNo, int pageSize);
+	
 	Movie save(Movie movie);
 
-	Optional<Movie> singleMovie(ObjectId id);
+	Optional<Movie> singleMovie(String id);
 
 }

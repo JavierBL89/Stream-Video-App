@@ -23,7 +23,7 @@ public class ReviewController {
 	@Autowired
 	private ReviewServiceImpl reviewServiceImpl;
 	
-	@PostMapping("/add-review")                         // Whatever we get as requestbody, converte it into a map of key string, value string. 
+	@PostMapping("/add-review")                         // Whatever we get as requestbody, convert it into a map of key string, value string. 
 	                                                        // And we name it payload
 	private ResponseEntity<Review> postMovieReview(@RequestBody Map<String, String> payload) {
 		return new ResponseEntity<Review>(reviewServiceImpl.createReview(

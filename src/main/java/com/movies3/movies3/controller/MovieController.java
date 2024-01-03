@@ -1,25 +1,61 @@
 package com.movies3.movies3.controller;
 
+import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.movies3.movies3.model.Movie;
 
 @Controller
+@CrossOrigin(origins = "*")
 public class MovieController {
 	
 	@Autowired
 	private com.movies3.movies3.service.MovieServiceImpl movieServiceImpl;
+	
+	@GetMapping("/movies/all")
+	public @ResponseBody List<Movie> getAllMovies(
+			 @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+			    @RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
+			    ){
+		return movieServiceImpl.allMovies(pageNo, pageSize);
+	}
+	
+	@GetMapping("/movies/usa")
+	public @ResponseBody List<Movie> getAmericanMovies(
+			 @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+			    @RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
+			    ){
+		return movieServiceImpl.getAmericanMovies(pageNo, pageSize);
+	}
+	
+	@GetMapping("/movies/eng")
+	public @ResponseBody List<Movie> getEngMovies(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+			@RequestParam(value = "pageSize", defaultValue ="6", required = false) int pageSize
+			){
+		return movieServiceImpl.getEnglishMovies(pageNo, pageSize);
+	}
+	
+	@GetMapping("/movies/top20")
+		public @ResponseBody List<Movie> getTop20Movies(
+				@RequestParam(value = "pagNo", defaultValue = "0", required = false) int pageNo, 
+				@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+			return movieServiceImpl.getTop20Movies(pageNo, pageSize);
+		}
+	
 
 	@GetMapping("/movies/{id}")
-	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable ObjectId id){
+	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){
 		return new ResponseEntity<Optional<Movie>>(movieServiceImpl.singleMovie(id), HttpStatus.OK);
 	}
 }

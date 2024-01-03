@@ -26,12 +26,12 @@ public class HomeController {
 	}*/
 
 	
-	 @GetMapping("/home/movies") 
+	/* @GetMapping("/home/movies") 
 	 public ResponseEntity<List<Movie>> getAllMovies(){ 
 		 return new ResponseEntity<List<Movie>>(movieService.allMovies(),
 	  HttpStatus.OK);
 	  }
-	 
+	 */
 	 
 	
 	 // @GetMapping("/") public String getAllMovies() { return "home puta"; }

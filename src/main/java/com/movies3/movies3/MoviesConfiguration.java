@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -27,6 +28,16 @@ public class MoviesConfiguration implements WebMvcConfigurer{
 
        @Autowired
 		private org.springframework.context.ApplicationContext applicationContext;
+       
+       @Override
+       public void addCorsMappings(CorsRegistry registry) {
+           registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("PUT", "DELETE",
+                   "GET", "POST").allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method",
+                           "Access-Control-Request-Headers")
+                   .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
+                   .allowCredentials(true).maxAge(3600);
+       }
+       
        
        @Bean
        public SpringResourceTemplateResolver templateResolver() {
