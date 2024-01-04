@@ -47,6 +47,9 @@ public interface MovieService {
 	// usa series
     List<Movie> getUsaSeries(int pageNo, int pageSize);
     
-	// usa series
+	// action
     List<Movie> getActionMovies(int pageNo, int pageSize);
+    
+	// drama
+    List<Movie> getDramaMovies(int pageNo, int pageSize);
 }

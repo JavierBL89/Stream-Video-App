@@ -182,12 +182,23 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	public List<Movie> getActionMovies(int pageNo, int pageSize) {
 		Pageable pagableActionMovies = PageRequest.of(pageNo, pageSize);
-        Page <Movie> actionMoviesFound = movieRepository.findEnglishSeries(pagableActionMovies);
+        Page <Movie> actionMoviesFound = movieRepository.findActionMovies(pagableActionMovies);
         // convert to a movie list
         List <Movie> actionMoviesList = actionMoviesFound.getContent();
 		return actionMoviesList;
 	}
 
+	/***
+	 * Get drama movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
+	public List<Movie> getDramaMovies(int pageNo, int pageSize) {
+		Pageable pagableDramaMovies = PageRequest.of(pageNo, pageSize);
+        Page <Movie> dramaMoviesFound = movieRepository.findDramaMovies(pagableDramaMovies);
+        // convert to a movie list
+        List <Movie> dramaMoviesList = dramaMoviesFound.getContent();
+		return dramaMoviesList;
+	}
 }
 //tt0144999
 //@Query("{'ImdbId': {$gte: tt0144599, $lte: tt0144999}}")
