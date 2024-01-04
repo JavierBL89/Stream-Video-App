@@ -14,9 +14,9 @@ function SectionPerGender(props) {
       <H5 text={props.listTitle} />
       {
         numberOfRows === "2" ?
-          <DoubleRowHolder listTitle={props.listTitle} category={props.category} />
+          <DoubleRowHolder listTitle={props.listTitle} category={props.category} genre={props.genre} />
           :
-          <SingleRowHolder listTitle={props.listTitle} category={props.category} />
+          <SingleRowHolder listTitle={props.listTitle} category={props.category} genre={props.genre} />
       }
     </Container>
 

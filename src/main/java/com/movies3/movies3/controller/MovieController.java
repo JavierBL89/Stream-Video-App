@@ -31,23 +31,8 @@ public class MovieController {
 		return movieServiceImpl.allMovies(pageNo, pageSize);
 	}
 	
-	@GetMapping("/movies/usa")
-	public @ResponseBody List<Movie> getAmericanMovies(
-			 @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
-			    @RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
-			    ){
-		return movieServiceImpl.getAmericanMovies(pageNo, pageSize);
-	}
 	
-	@GetMapping("/movies/eng")
-	public @ResponseBody List<Movie> getEngMovies(
-			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
-			@RequestParam(value = "pageSize", defaultValue ="6", required = false) int pageSize
-			){
-		return movieServiceImpl.getEnglishMovies(pageNo, pageSize);
-	}
-	
-	@GetMapping("/movies/top20")
+	@GetMapping("/myspace/top20")
 		public @ResponseBody List<Movie> getTop20Movies(
 				@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
 				@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
@@ -55,41 +40,11 @@ public class MovieController {
 			return movieServiceImpl.getTop20Movies(pageNo, pageSize);
 		}
 	
-	@GetMapping("/movies/nextWeek")
-	public @ResponseBody List<Movie> getNextWeekMovies(
-			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
-			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
-			){
-		return movieServiceImpl.getNextWeekMovies(pageNo, pageSize);
-	}
-
 	@GetMapping("/movies/trends")
 	public @ResponseBody List<Movie> getTrendsMovies(
 			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
 			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
 		return movieServiceImpl.getTrendsMovies(pageNo, pageSize);
-	}
-	
-	@GetMapping("/series/popular")
-	public @ResponseBody List<Movie> getPopularSeries(
-			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
-			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
-		return movieServiceImpl.getPopularSeries(pageNo, pageSize);
-	}
-	
-	
-	@GetMapping("/series/eng")
-	public @ResponseBody List<Movie> getEnglishSeries(
-			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
-			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
-		return movieServiceImpl.getEnglishSeries(pageNo, pageSize);
-	}
-	
-	@GetMapping("/series/usa")
-	public @ResponseBody List<Movie> getUsaSeries(
-			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
-			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
-		return movieServiceImpl.getUsaSeries(pageNo, pageSize);
 	}
 	
 	@GetMapping("/movies/action")
@@ -121,6 +76,55 @@ public class MovieController {
 			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
 		return movieServiceImpl.getRomanceMovies(pageNo, pageSize);
 	}
+	
+	@GetMapping("/series/popular")
+	public @ResponseBody List<Movie> getPopularSeries(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getPopularSeries(pageNo, pageSize);
+	}
+	
+	
+	@GetMapping("/series/eng")
+	public @ResponseBody List<Movie> getEnglishSeries(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getEnglishSeries(pageNo, pageSize);
+	}
+	
+	@GetMapping("/series/usa")
+	public @ResponseBody List<Movie> getUsaSeries(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getUsaSeries(pageNo, pageSize);
+	}
+	
+	@GetMapping("/upcoming/nextweek")
+	public @ResponseBody List<Movie> getNextWeekMovies(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
+			){
+		return movieServiceImpl.getNextWeekMovies(pageNo, pageSize);
+	}
+
+	@GetMapping("/upcoming/eng")
+	public @ResponseBody List<Movie> getEngMovies(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+			@RequestParam(value = "pageSize", defaultValue ="6", required = false) int pageSize
+			){
+		return movieServiceImpl.getEnglishMovies(pageNo, pageSize);
+	}
+	
+	@GetMapping("/upcoming/usa")
+	public @ResponseBody List<Movie> getAmericanMovies(
+			 @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+			    @RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
+			    ){
+		return movieServiceImpl.getAmericanMovies(pageNo, pageSize);
+	}
+	
+	
+
 	/**@GetMapping("/movies/{id}")
 	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){
 		return new ResponseEntity<Optional<Movie>>(movieServiceImpl.singleMovie(id), HttpStatus.OK);

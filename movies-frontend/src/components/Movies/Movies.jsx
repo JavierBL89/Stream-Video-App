@@ -10,32 +10,37 @@ function Movies() {
             <Container fluid className="movies-container">
                 <SectionPerGender
                     listTitle="trends"
-                    category="trends"
+                    category="movies"
+                    genre="trends"
                     className="trendMovies"
                     numberOfRows="2"
                 />
                 <SectionPerGender
                     listTitle="action"
-                    category="action"
+                    category="movies"
+                    genre="action"
                     className="actionMovies"
                     numberOfRows="2"
 
                 />
                 <SectionPerGender
                     listTitle="drama"
-                    category="drama"
+                    category="movies"
+                    genre="drama"
                     className="dramaMovies"
                     numberOfRows="2"
                 />
                 <SectionPerGender
                     listTitle="comedy"
-                    category="comedy"
+                    category="movies"
+                    genre="comedy"
                     className="comedyMovies"
                     numberOfRows="2"
                 />
                 <SectionPerGender
                     listTitle="romance"
-                    category="romance"
+                    category="movies"
+                    genre="romance"
                     className="romanceMovies"
                     numberOfRows="2"
 

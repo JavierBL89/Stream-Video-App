@@ -11,21 +11,24 @@ function Series() {
             <Container fluid className="series-container">
                 <SectionPerGender
                     listTitle="popular"
-                    category="popular series"
-                    className="popularSeries"
+                    category="series"
+                    genre="popular"
+                    className="popularseries"
                     numberOfRows="1"
 
                 />
                 <SectionPerGender
                     listTitle="england"
-                    category="eng series"
+                    category="series"
+                    genre="eng"
                     className="englishSeries"
                     numberOfRows="2"
 
                 />
                 <SectionPerGender
                     listTitle="usa"
-                    category="usa series"
+                    category="series"
+                    genre="usa"
                     className="usaSeries"
                     numberOfRows="2"
                 />

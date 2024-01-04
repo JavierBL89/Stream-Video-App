@@ -16,10 +16,11 @@ function DoubleRowHolder(props) {
     let moviesArray = [];
     let listCurrentPage;
     let category = props.category;
+    let genre = props.genre;
     console.log(num_of_columns.current);
     /** Use the `usePagination` custom hook to destructure
      the returned values into separate variables. **/
-    let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns.current);
+    let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, genre, num_of_columns.current);
     moviesArray = listOfMovies;
 
 
@@ -64,11 +65,11 @@ function DoubleRowHolder(props) {
 
                     {
                         disabled_prevPageButton.current === true ?
-                            <button name={`${category}`} className="pagination-button" id="next-button" disabled title="Prev page" aria-label="Next page"
+                            <button name={`${genre}`} className="pagination-button" id="next-button" disabled title="Prev page" aria-label="Next page"
                                 onClick={(event) => handlePrevPage(event)} >&lt;
                             </button>
                             :
-                            <button name={`${category}`} className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
+                            <button name={`${genre}`} className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
                                 onClick={(event) => handlePrevPage(event)} >&lt;
                             </button>
                     }                   <Stack direction="vertical">
@@ -91,11 +92,11 @@ function DoubleRowHolder(props) {
                    *** else enabled button ****/}
                     {
                         disabled_nextPageButton.current === true ?
-                            <button name={`${category}`} className="pagination-button" id="next-button" disabled title="Next page" aria-label="Next page"
+                            <button name={`${genre}`} className="pagination-button" id="next-button" disabled title="Next page" aria-label="Next page"
                                 onClick={(event) => handleNextPage(event)} >&gt;
                             </button>
                             :
-                            <button name={`${category}`} className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
+                            <button name={`${genre}`} className="pagination-button" id="next-button" title="Next page" aria-label="Next page"
                                 onClick={(event) => handleNextPage(event)} >&gt;
                             </button>
                     }

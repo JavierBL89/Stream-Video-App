@@ -10,20 +10,23 @@ function UpComing() {
                 <SectionPerGender
                     listTitle="next week"
                     category="nextWeek"
+                    genre="nextweek"
                     className="upNextWeek"
                     numberOfRows="1"
 
                 />
                 <SectionPerGender
                     listTitle="from england"
-                    category="eng"
+                    category="upcomming"
+                    genre="eng"
                     className="engUpComing"
                     numberOfRows="1"
 
                 />
                 <SectionPerGender
                     listTitle="from usa"
-                    category="usa"
+                    category="upcoming"
+                    genre="usa"
                     className="usaUpComing"
                     numberOfRows="1"
                 />

@@ -170,7 +170,7 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	public List<Movie> getUsaSeries(int pageNo, int pageSize) {
 		Pageable pagableUsaSeries = PageRequest.of(pageNo, pageSize);
-        Page <Movie> usaSeriesFound = movieRepository.findEnglishSeries(pagableUsaSeries);
+        Page <Movie> usaSeriesFound = movieRepository.findUsaSeries(pagableUsaSeries);
         // convert to a movie list
         List <Movie> usaSeriesList = usaSeriesFound.getContent();
 		return usaSeriesList;

@@ -8,12 +8,14 @@ import { useFetchMovies } from "./fetchMovies.jsx"
  *  with the following properties:
  **    { data, loading, error, goToNextPage, goToPrevPage };
  */
-const usePagination = (listType, num_of_columns) => {
+const usePagination = (categoryType, genreType, num_of_columns) => {
     let url;
-    let category = listType;
+    let category = categoryType;
+    let genre = genreType;
     let columns = num_of_columns;
+    console.log(genre);
 
-    const [pages, setPages] = useState({ [category]: { page: 0, columns_per_page: columns } });
+    const [pages, setPages] = useState({ [genre]: { page: 0, columns_per_page: columns } });
 
     /**
      * The function `goToNextPage` updates the page number 
@@ -56,9 +58,9 @@ const usePagination = (listType, num_of_columns) => {
     `pages[category]?.page` to the variable `current_page`. If `pages[category]?.page` is defined
     and not null, then `current_page` will be assigned that value. Otherwise, it will be assigned
     the value of 0. */
-    let current_page = pages[category]?.page ?? 0;
-    let columns_per_page = pages[category]?.columns_per_page ?? 6;
-    url = `http://localhost:8080/movies/${category}?pageNo=${current_page}&pageSize=${columns_per_page}`;
+    let current_page = pages[genre]?.page ?? 0;
+    let columns_per_page = pages[genre]?.columns_per_page ?? 6;
+    url = `http://localhost:8080/${category}/${genre}?pageNo=${current_page}&pageSize=${columns_per_page}`;
 
     let { data, loading, error } = useFetchMovies(url);
     if (error) {

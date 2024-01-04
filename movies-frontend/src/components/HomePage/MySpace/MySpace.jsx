@@ -13,13 +13,13 @@ function MySpace() {
             <Container fluid className="mySpace-container">
                 <Presentation />
                 <H6 className="" text="Continue watching" />
-                <SingleRowHolder category="continueWatching" />
+                <SingleRowHolder category="myspace" genre="continuewatching" />
                 <H6 text="My List" />
-                <SingleRowHolder category="myList" />
+                <SingleRowHolder category="myspace" genre="mylist" />
                 <H6 text="Top 20 last week" />
-                <SingleRowHolder category="top20" />
+                <SingleRowHolder category="myspace" genre="top20" />
                 <H6 text="Based on your searches" />
-                <SingleRowHolder category="basedOn" />
+                <SingleRowHolder category="myspace" genre="basedon" />
             </Container>
         </Container>
     )
