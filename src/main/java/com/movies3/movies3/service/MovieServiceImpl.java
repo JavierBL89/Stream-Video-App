@@ -164,6 +164,18 @@ public class MovieServiceImpl implements MovieService {
 		return engSeriesList;
 	}
 
+	/***
+	 * Get amaerican series  list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
+	public List<Movie> getUsaSeries(int pageNo, int pageSize) {
+		Pageable pagableUsaSeries = PageRequest.of(pageNo, pageSize);
+        Page <Movie> usaSeriesFound = movieRepository.findEnglishSeries(pagableUsaSeries);
+        // convert to a movie list
+        List <Movie> usaSeriesList = usaSeriesFound.getContent();
+		return usaSeriesList;
+	}
+
 }
 //tt0144999
 //@Query("{'ImdbId': {$gte: tt0144599, $lte: tt0144999}}")

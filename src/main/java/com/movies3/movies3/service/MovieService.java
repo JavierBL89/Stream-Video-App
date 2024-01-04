@@ -10,6 +10,10 @@ import com.movies3.movies3.model.Movie;
 @Service
 public interface MovieService {
 
+	Movie save(Movie movie);
+
+	Optional<Movie> singleMovie(String id);
+
 	// database access method
 	public List<Movie> allMovies(int pageNo, int pageSize);
 	
@@ -31,10 +35,6 @@ public interface MovieService {
 	// nextWeek 
 	public List<Movie> getNextWeekMovies(int pageNo, int pageSize);
 	
-	Movie save(Movie movie);
-
-	Optional<Movie> singleMovie(String id);
-
 	// trends
 	List<Movie> getTrendsMovies(int pageNo, int pageSize);
 
@@ -44,4 +44,6 @@ public interface MovieService {
     // eng series
 	List<Movie> getEnglishSeries(int pageNo, int pageSize);
 
+	// usa series
+    List<Movie> getUsaSeries(int pageNo, int pageSize);
 }

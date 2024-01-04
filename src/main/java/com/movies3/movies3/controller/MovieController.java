@@ -77,11 +77,19 @@ public class MovieController {
 		return movieServiceImpl.getPopularSeries(pageNo, pageSize);
 	}
 	
+	
 	@GetMapping("/series/eng")
 	public @ResponseBody List<Movie> getEnglishSeries(
 			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
 			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
 		return movieServiceImpl.getEnglishSeries(pageNo, pageSize);
+	}
+	
+	@GetMapping("/series/usa")
+	public @ResponseBody List<Movie> getUsaSeries(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getUsaSeries(pageNo, pageSize);
 	}
 	/**@GetMapping("/movies/{id}")
 	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){
