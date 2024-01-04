@@ -34,9 +34,9 @@ function Movies() {
                     numberOfRows="2"
                 />
                 <SectionPerGender
-                    listTitle="romantic comedies"
-                    category="romantic comedies"
-                    className="romanticComedyMovies"
+                    listTitle="romance"
+                    category="romance"
+                    className="romanceMovies"
                     numberOfRows="2"
 
                 />

@@ -53,6 +53,9 @@ public interface MovieService {
 	// drama
     List<Movie> getDramaMovies(int pageNo, int pageSize);
     
- // drama
+    // drama
     List<Movie> getComedyMovies(int pageNo, int pageSize);
+    
+    // romance
+    List<Movie> getRomanceMovies(int pageNo, int pageSize);
 }

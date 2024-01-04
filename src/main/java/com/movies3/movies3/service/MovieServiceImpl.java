@@ -210,6 +210,14 @@ public class MovieServiceImpl implements MovieService {
         List <Movie> comedyMoviesList = comedyMoviesFound.getContent();
 		return comedyMoviesList;
 	}
+
+	public List<Movie> getRomanceMovies(int pageNo, int pageSize) {
+		Pageable pagableRomanceMovies = PageRequest.of(pageNo, pageSize);
+        Page <Movie> romanceMoviesFound = movieRepository.findComedyMovies(pagableRomanceMovies);
+        // convert to a movie list
+        List <Movie> romanceMoviesList = romanceMoviesFound.getContent();
+		return romanceMoviesList;
+	}
 }
 //tt0144999
 //@Query("{'ImdbId': {$gte: tt0144599, $lte: tt0144999}}")
