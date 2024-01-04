@@ -70,43 +70,86 @@ public class MovieServiceImpl implements MovieService {
 		return null;
 	}
 
+	/***
+	 * Get English movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
 	@Override
 	public List<Movie> getEnglishMovies(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
 		Pageable pageableEngMovies = PageRequest.of(pageNo, pageSize);
 		Page <Movie> engMoviesFound = movieRepository.findEnglishMovies(pageableEngMovies);
+        // convert to a movie list
 		List <Movie> engMoviesList = engMoviesFound.getContent();
-		engMoviesList.forEach(movie -> {System.out.println(movie.getName());});
-		 System.out.println(" ");
 		return engMoviesList;
 	}
-/***
- * Method is meat to retreive only american movies ,
- *  but dataset documents do not have this attribute. 
- *  Search criteria is on ID's
- */
+	
+	/***
+	 * Get English movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
 	@Override
 	public List<Movie> getAmericanMovies(int pageNo, int pageSize) {
 
 		Pageable pageableUSA =  PageRequest.of(pageNo, pageSize);
 		Page <Movie> americanMoviesFound = movieRepository.findAmericanMovies(pageableUSA);
+        // convert to a movie list
 		List <Movie> americanMoviesList = americanMoviesFound.getContent();
-		americanMoviesList.forEach(movie -> {System.out.println(movie.getName());});
-		 System.out.println(" ");
-		 
-		// for(int i = 0; i< americanMoviesList.length)
 		return americanMoviesList;
 	}
+	
+	/***
+	 * Get top20 movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
 	@Override
 	public List<Movie> getTop20Movies(int pageNo, int pageSize) {
+		
         Pageable pagableTop20 = PageRequest.of(pageNo, pageSize);
         Page <Movie> top20MoviesFound = movieRepository.findTop20Movies(pagableTop20);
+        // convert to a movie list
         List <Movie> top20MoviesList = top20MoviesFound.getContent();
-        top20MoviesList.forEach(movie -> {System.out.println(movie.getName());});
-        System.out.println(" ");
+       
 		return top20MoviesList;
 	}
 
+	/***
+	 * Get Next movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
+	@Override
+	public List<Movie> getNextWeekMovies(int pageNo, int pageSize) {
+		Pageable pagableNextWeek = PageRequest.of(pageNo, pageSize);
+        Page <Movie> nextWeekMoviesFound = movieRepository.findNextWeekMovies(pagableNextWeek);
+        // convert to a movie list
+        List <Movie> nextWeekMoviesList = nextWeekMoviesFound.getContent();
+		return nextWeekMoviesList;
+	}
+
+	/***
+	 * Get trends movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
+	@Override
+	public List<Movie> getTrendsMovies(int pageNo, int pageSize) {
+		Pageable pagableTrends = PageRequest.of(pageNo, pageSize);
+        Page <Movie> trendsMoviesFound = movieRepository.findTrendsMovies(pagableTrends);
+        // convert to a movie list
+        List <Movie> trendsMoviesList = trendsMoviesFound.getContent();
+		return trendsMoviesList;
+	}
+	
+	/***
+	 * Get popular series  list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
+	@Override
+	public List<Movie> getPopularSeries(int pageNo, int pageSize) {
+		Pageable pagablePopularSeries = PageRequest.of(pageNo, pageSize);
+        Page <Movie> popularSeriesFound = movieRepository.findPopularSeries(pagablePopularSeries);
+        // convert to a movie list
+        List <Movie> popularSeriesList = popularSeriesFound.getContent();
+		return popularSeriesList;
+	}
 }
 //tt0144999
 //@Query("{'ImdbId': {$gte: tt0144599, $lte: tt0144999}}")

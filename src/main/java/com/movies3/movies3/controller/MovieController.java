@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.schema.IdentifiableJsonSchemaProperty.RequiredJsonSchemaProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -48,20 +49,36 @@ public class MovieController {
 	
 	@GetMapping("/movies/top20")
 		public @ResponseBody List<Movie> getTop20Movies(
-				@RequestParam(value = "pagNo", defaultValue = "0", required = false) int pageNo, 
-				@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+				@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+				@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
+				){
 			return movieServiceImpl.getTop20Movies(pageNo, pageSize);
 		}
 	
 	@GetMapping("/movies/nextWeek")
 	public @ResponseBody List<Movie> getNextWeekMovies(
-			@RequestParam(value = "pagNo", defaultValue = "0", required = false) int pageNo, 
-			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
-		return movieServiceImpl.getTop20Movies(pageNo, pageSize);
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize
+			){
+		return movieServiceImpl.getNextWeekMovies(pageNo, pageSize);
 	}
 
-	@GetMapping("/movies/{id}")
+	@GetMapping("/movies/trends")
+	public @ResponseBody List<Movie> getTrendsMovies(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getTrendsMovies(pageNo, pageSize);
+	}
+	
+	@GetMapping("series/popular")
+	public @ResponseBody List<Movie> getPopularSeries(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getPopularSeries(pageNo, pageSize);
+	}
+	
+	/**@GetMapping("/movies/{id}")
 	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){
 		return new ResponseEntity<Optional<Movie>>(movieServiceImpl.singleMovie(id), HttpStatus.OK);
-	}
+	}*/
 }

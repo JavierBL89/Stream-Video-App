@@ -30,10 +30,16 @@ public interface MovieService {
 	public List<Movie> getTop20Movies(int pageNo, int pageSize);
 	
 	// nextWeek 
-	public List<Movie> getNextMovies(int pageNo, int pageSize);
+	public List<Movie> getNextWeekMovies(int pageNo, int pageSize);
 	
 	Movie save(Movie movie);
 
 	Optional<Movie> singleMovie(String id);
+
+	// trends
+	List<Movie> getTrendsMovies(int pageNo, int pageSize);
+
+	// popular series
+	List<Movie> getPopularSeries(int pageNo, int pageSize);
 
 }
