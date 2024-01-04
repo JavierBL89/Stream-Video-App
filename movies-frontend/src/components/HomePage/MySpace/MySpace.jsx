@@ -16,7 +16,7 @@ function MySpace() {
                 <SingleRowHolder category="continueWatching" />
                 <H6 text="My List" />
                 <SingleRowHolder category="myList" />
-                <H6 text="Top 10 last week" />
+                <H6 text="Top 20 last week" />
                 <SingleRowHolder category="top20" />
                 <H6 text="Based on your searches" />
                 <SingleRowHolder category="basedOn" />

@@ -12,7 +12,7 @@ function DoubleRowHolder(props) {
     // set initial page 
     let disabled_nextPageButton = useRef(false);
     let disabled_prevPageButton = useRef(true);
-    const num_of_columns = useRef(12);
+    const num_of_columns = useRef(13);
     let moviesArray = [];
     let listCurrentPage;
     let category = props.category;

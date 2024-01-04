@@ -25,7 +25,10 @@ function SingleRowHolder(props) {
     let { data: listOfMovies, pages, loading, error, goToNextPage, goToPrevPage } = usePagination(category, num_of_columns.current);
     moviesArray = listOfMovies;
 
+    if (error) {
+        console.log(error.message);
 
+    }
 
     /**
      * The function "handleNextPage" is used to handle the event of clicking 
@@ -35,6 +38,7 @@ function SingleRowHolder(props) {
     function handleNextPage(event) {
         let category = event.target.name
         listCurrentPage = pages[category].page;
+        console.log(listCurrentPage);
         goToNextPage(category, num_of_columns.current)
         /* buttonsController is a function that returns an object with two
         properties for updating the incrementing and decrementing buttons state */

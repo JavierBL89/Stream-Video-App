@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFetchMovies } from "./fetchMovies.jsx"
 
 /**
@@ -15,22 +15,21 @@ const usePagination = (listType, num_of_columns) => {
 
     const [pages, setPages] = useState({ [category]: { page: 0, columns_per_page: columns } });
 
-
     /**
      * The function `goToNextPage` updates the page number 
      * for a given category in a state variable called `pages`.
      */
     const goToNextPage = (listName, cols) => {
-        category = listName;
-        columns = cols;
         setPages((prevState) => ({
             ...prevState,
-            [category]: {
-                ...prevState[category],
-                page: prevState[category].page + 1,
-                columns_per_page: columns
+            [listName]: {
+                ...prevState[listName],
+                page: prevState[listName].page + 1,
+                columns_per_page: cols
             }
         }));
+        category = listName;
+        columns = cols;
 
     }
 
@@ -38,18 +37,19 @@ const usePagination = (listType, num_of_columns) => {
      * The function `goToPrevPage` updates the page number of 
      * a specific category in the state by decrementing it by 1.
      */
-    const goToPrevPage = (listName) => {
-        console.log(listName);
-        category = listName;
-        console.log(category);
+    const goToPrevPage = (listName, cols) => {
         setPages((prevState) => ({
             ...prevState,
-            [category]: {
-                ...prevState[category],
-                page: prevState[category].page - 1
+            [listName]: {
+                ...prevState[listName],
+                page: prevState[listName].page - 1,
+                columns_per_page: cols
+
             }
 
         }));
+        category = listName;
+        columns = cols;
     }
 
     /* The first code line is assigning the value of
@@ -58,11 +58,13 @@ const usePagination = (listType, num_of_columns) => {
     the value of 0. */
     let current_page = pages[category]?.page ?? 0;
     let columns_per_page = pages[category]?.columns_per_page ?? 6;
-    console.log();
     url = `http://localhost:8080/movies/${category}?pageNo=${current_page}&pageSize=${columns_per_page}`;
 
     let { data, loading, error } = useFetchMovies(url);
+    if (error) {
+        console.log(error);
 
+    }
     return { data, pages, loading, error, goToNextPage, goToPrevPage };
 
 }

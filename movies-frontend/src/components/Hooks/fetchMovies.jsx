@@ -12,8 +12,16 @@ const useFetchMovies = (url) => {
             try {
                 const response = await fetch(url);
                 const result = await response.json();
+                if (response.ok) {
+                    console.log(response);
+                }
+                else {
+                    throw new Error(`HTTP error! status: ${result}`);
+                }
                 if (result) {
                     setData(result);// Assuming the result is the array of movies
+                    console.log(result);
+
                 }
                 else {
                     setError("No data returned");
@@ -22,11 +30,12 @@ const useFetchMovies = (url) => {
                 setError(err);
             };
             setLoading(false);
-
         };
         fetchData();
     }, [url]); // Only re-run the effect if url changes
+    console.log(url);
 
+    console.log(data);
     return { data, loading, error }
 }
 
