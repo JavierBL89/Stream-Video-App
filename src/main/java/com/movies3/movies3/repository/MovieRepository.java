@@ -51,9 +51,12 @@ public interface MovieRepository extends MongoRepository <Movie, String> {
 	@Query("{'genre':{$regex:Drama}}")
 	Page<Movie> findDramaMovies(Pageable pagableDramaMovies);
 	
-	
+	@Query("{'genre':{$regex:Comedy}}")
+	Page<Movie> findComedyMovies(Pageable pagableComedyMovies);
+
 	
 	  public long count();
+
 
 
 }

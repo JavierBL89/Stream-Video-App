@@ -106,6 +106,14 @@ public class MovieController {
 			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
 		return movieServiceImpl.getDramaMovies(pageNo, pageSize);
 	}
+	
+
+	@GetMapping("/movies/comedy")
+	public @ResponseBody List<Movie> getComedyMovies(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getComedyMovies(pageNo, pageSize);
+	}
 	/**@GetMapping("/movies/{id}")
 	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){
 		return new ResponseEntity<Optional<Movie>>(movieServiceImpl.singleMovie(id), HttpStatus.OK);
