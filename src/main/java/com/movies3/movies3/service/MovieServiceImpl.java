@@ -165,7 +165,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	/***
-	 * Get amaerican series  list with Pageable class implementation,
+	 * Get american series  list with Pageable class implementation,
 	 *  and converts the returned data into a list
 	 */
 	public List<Movie> getUsaSeries(int pageNo, int pageSize) {
@@ -174,6 +174,18 @@ public class MovieServiceImpl implements MovieService {
         // convert to a movie list
         List <Movie> usaSeriesList = usaSeriesFound.getContent();
 		return usaSeriesList;
+	}
+
+	/***
+	 * Get action movies list with Pageable class implementation,
+	 *  and converts the returned data into a list
+	 */
+	public List<Movie> getActionMovies(int pageNo, int pageSize) {
+		Pageable pagableActionMovies = PageRequest.of(pageNo, pageSize);
+        Page <Movie> actionMoviesFound = movieRepository.findEnglishSeries(pagableActionMovies);
+        // convert to a movie list
+        List <Movie> actionMoviesList = actionMoviesFound.getContent();
+		return actionMoviesList;
 	}
 
 }

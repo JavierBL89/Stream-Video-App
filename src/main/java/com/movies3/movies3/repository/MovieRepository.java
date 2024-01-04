@@ -44,5 +44,8 @@ public interface MovieRepository extends MongoRepository <Movie, String> {
 	
 	@Query("{'_id':{$gte: 'tt0044340', $lte: 'tt0074340'}}")
 	Page<Movie> findUsaSeries(Pageable pageableBase);
+	
+	@Query("{'genre':{$regex:Action}}")
+	Page<Movie> findActionMovies(Pageable pageableBase);
 	  public long count();
 }
