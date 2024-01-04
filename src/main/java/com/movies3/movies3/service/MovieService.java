@@ -3,12 +3,11 @@ package com.movies3.movies3.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import com.movies3.movies3.model.Movie;
 
-
+@Service
 public interface MovieService {
 
 	// database access method
@@ -41,5 +40,8 @@ public interface MovieService {
 
 	// popular series
 	List<Movie> getPopularSeries(int pageNo, int pageSize);
+
+    // eng series
+	List<Movie> getEnglishSeries(int pageNo, int pageSize);
 
 }

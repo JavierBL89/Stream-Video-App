@@ -70,13 +70,19 @@ public class MovieController {
 		return movieServiceImpl.getTrendsMovies(pageNo, pageSize);
 	}
 	
-	@GetMapping("series/popular")
+	@GetMapping("/series/popular")
 	public @ResponseBody List<Movie> getPopularSeries(
 			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
 			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
 		return movieServiceImpl.getPopularSeries(pageNo, pageSize);
 	}
 	
+	@GetMapping("/series/eng")
+	public @ResponseBody List<Movie> getEnglishSeries(
+			@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, 
+			@RequestParam(value = "pageSize", defaultValue = "6", required = false) int pageSize){
+		return movieServiceImpl.getEnglishSeries(pageNo, pageSize);
+	}
 	/**@GetMapping("/movies/{id}")
 	public ResponseEntity<Optional <Movie>> getSingleMovie(@PathVariable String id){
 		return new ResponseEntity<Optional<Movie>>(movieServiceImpl.singleMovie(id), HttpStatus.OK);

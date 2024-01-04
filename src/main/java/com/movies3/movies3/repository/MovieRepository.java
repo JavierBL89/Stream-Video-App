@@ -5,7 +5,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import com.movies3.movies3.model.Movie;
@@ -39,5 +38,9 @@ public interface MovieRepository extends MongoRepository <Movie, String> {
 	
 	@Query("{'_id':{$gte: 'tt0054128', $lte: 'tt0074128'}}")
 	Page<Movie> findPopularSeries(Pageable pageableBase);
+	
+	@Query("{'_id':{$gte: 'tt0074128', $lte: 'tt0174128'}}")
+	Page<Movie> findEnglishSeries(Pageable pageableBase);
+	
 	  public long count();
 }
